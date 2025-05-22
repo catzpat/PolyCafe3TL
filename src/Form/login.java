@@ -40,6 +40,7 @@ public class login extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(255, 102, 0));
         jTextField1.setText("jTextField1");
 
+        jTextField2.setBackground(new java.awt.Color(153, 102, 255));
         jTextField2.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
