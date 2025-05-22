@@ -16,7 +16,7 @@ public class PolyCafe {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hello github");
+        System.out.println("hello minhkhoi");
     }
     
 }
