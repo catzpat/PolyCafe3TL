@@ -37,6 +37,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+        jTextField1.setBackground(new java.awt.Color(255, 102, 0));
         jTextField1.setText("jTextField1");
 
         jTextField2.setText("jTextField1");
