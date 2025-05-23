@@ -96,15 +96,15 @@ public class LoginForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         if (passWord.isEmpty()) {
             txtPW.setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         if (userName.equals("admin") && passWord.equals("1234")) {
-            new Admin_interface(userName).setVisible(true);
+            new Admin_interface(userName, "admin1.jpg").setVisible(true);
         } else if (userName.equals("user") && passWord.equals("1234")) {
             new Seller_interface(userName).setVisible(true);
         } else {
