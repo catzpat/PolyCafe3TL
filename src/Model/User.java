@@ -70,6 +70,10 @@ public class User {
     public String toString() {
         return "User{" + "Acc_Name=" + Acc_Name + ", Acc_PW=" + Acc_PW + ", Acc_Status=" + Acc_Status + ", FullName=" + FullName + ", Acc_Photo=" + Acc_Photo + ", Manager=" + Manager + '}';
     }
+
+    public boolean Acc_Status() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

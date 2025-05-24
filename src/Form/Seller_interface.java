@@ -4,7 +4,7 @@ public class Seller_interface extends javax.swing.JFrame {
 
     String userName = "";
     
-    public Seller_interface(String userName) {
+    public Seller_interface(String userName, String acc_Photo) {
         this.userName = userName;
         initComponents();
         txtHello.setText("Xin Chào. " + userName);
