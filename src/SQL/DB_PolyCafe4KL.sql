@@ -105,7 +105,7 @@ VALUES
 GO
 INSERT INTO BillsDetails (Bill_ID, Drink_ID, Price, Discount, Quantity)
 VALUES 
-(10003, 'D001', 35000, 0.1, 2),
+(10001, 'D001', 35000, 0.1, 2),
 (10002, 'D003', 25000, 0.0, 1),
 (10001, 'D005', 30000, 0.05, 1),
 (10001, 'D006', 28000, 0.05, 2),
