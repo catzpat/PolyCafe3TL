@@ -109,8 +109,8 @@ public class LoginForm extends javax.swing.JFrame {
             new Admin_interface(userName, "admin1.jpg").setVisible(true);
         } else if (userName.equals("admin2") && passWord.equals("1234")) {
             new Admin_interface(userName, "admin2.png").setVisible(true);
-        } else if (userName.equals("user") && passWord.equals("1234")) {
-//            new Seller_interface(userName).setVisible(true);
+        } else if (userName.equals("user1") && passWord.equals("1234")) {
+            new Seller_interface(userName, "user1.png").setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Tài khoản không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
         }

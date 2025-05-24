@@ -1,13 +1,22 @@
 package Form;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 public class Seller_interface extends javax.swing.JFrame {
 
     String userName = "";
+    String img;
     
-    public Seller_interface(String userName, String acc_Photo) {
+    public Seller_interface(String userName, String img) {
         this.userName = userName;
+        this.img = img;
         initComponents();
-        txtHello.setText("Xin Chào. " + userName);
+        txtHello.setText(userName);
+//        ImageIcon icon = new ImageIcon("src/USER_IMG/admin1.jpg");
+        ImageIcon icon = new ImageIcon("src/USER_IMG/" + img);
+        Image image = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); // điều chỉnh kích thước nếu cần
+        txtImg.setIcon(new ImageIcon(image));
     }
 
     @SuppressWarnings("unchecked")
@@ -15,17 +24,23 @@ public class Seller_interface extends javax.swing.JFrame {
     private void initComponents() {
 
         txtHello = new javax.swing.JLabel();
+        txtImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtHello.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtHello.setText("jLabel1");
+
+        txtImg.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(699, Short.MAX_VALUE)
+                .addContainerGap(757, Short.MAX_VALUE)
+                .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtHello, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -33,8 +48,10 @@ public class Seller_interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtHello)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHello)
+                    .addComponent(txtImg))
+                .addContainerGap(545, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,5 +94,6 @@ public class Seller_interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel txtHello;
+    private javax.swing.JLabel txtImg;
     // End of variables declaration//GEN-END:variables
 }
