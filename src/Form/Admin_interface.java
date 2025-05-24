@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Admin_interface extends javax.swing.JFrame {
 
-    String userName = "";
+    String userName = "Quang Huy";
     String img;
 
     public Admin_interface(String userName, String img) {
