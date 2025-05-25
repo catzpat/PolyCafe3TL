@@ -17,6 +17,7 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
     }
 
     public void initLayout() {
+        txtSignIn.setText("<html><u>SignIn</u></html>");
         mainPanel.setBackground(new Color(20, 20, 20));
         btnSend.setBackground(new Color(40, 40, 40));
         btnSend.setForeground(Color.WHITE);
