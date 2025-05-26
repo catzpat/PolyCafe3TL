@@ -204,7 +204,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void txtSignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSignInMouseClicked
         LoginForm log = new LoginForm();
-        log.setVisible(true);
+        log.show();
         this.dispose(); // Xóa form cũ
     }//GEN-LAST:event_txtSignInMouseClicked
 
