@@ -19,6 +19,8 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
     public void initLayout() {
         setLocationRelativeTo(null);
         txtSignin.setText("<html><u>SignIn</u></html>");
+        txtSignin.setBackground(Color.white);
+        txtSignin.setForeground(Color.WHITE);
         mainPanel.setBackground(new Color(20, 20, 20));
         btnSend.setBackground(new Color(40, 40, 40));
         btnSend.setForeground(Color.WHITE);
@@ -70,7 +72,9 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Already have an account?");
 
+        txtSignin.setBackground(new java.awt.Color(255, 255, 255));
         txtSignin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtSignin.setForeground(new java.awt.Color(255, 255, 255));
         txtSignin.setText("SignIn");
         txtSignin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,6 +83,11 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
         });
 
         btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Username:");
@@ -135,9 +144,13 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
 
     private void txtSigninMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSigninMouseClicked
         LoginForm log = new LoginForm();
-        log.show();
+        log.setVisible(true);
         this.dispose(); // Đóng form forgot password
     }//GEN-LAST:event_txtSigninMouseClicked
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+
+    }//GEN-LAST:event_btnSendActionPerformed
 
     /**
      * @param args the command line arguments
