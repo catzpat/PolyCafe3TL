@@ -1,23 +1,24 @@
 package Form;
 
-import Form.LoginForm;
+import CafeDAO.DAO;
+import Model.User;
 import java.awt.Color;
-import static java.awt.Color.white;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class ForgotPasswordForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ForgotPasswordForm
-     */
     public ForgotPasswordForm() {
         initComponents();
         initLayout();
-        setLocationRelativeTo(null);
     }
 
     public void initLayout() {
-        txtSignIn.setText("<html><u>SignIn</u></html>");
+        setLocationRelativeTo(null);
+        txtSignin.setText("<html><u>SignIn</u></html>");
         mainPanel.setBackground(new Color(20, 20, 20));
         btnSend.setBackground(new Color(40, 40, 40));
         btnSend.setForeground(Color.WHITE);
@@ -32,6 +33,16 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
                 btnSend.setBackground(new Color(40, 40, 40));
             }
         });
+
+        txtSignin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtSignin.setForeground(new Color(70, 130, 180));
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtSignin.setForeground(Color.WHITE);
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -40,11 +51,11 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
-        btnSend = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtSignIn = new javax.swing.JLabel();
+        txtSignin = new javax.swing.JLabel();
+        btnSend = new javax.swing.JButton();
+        txtUsername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,37 +66,22 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FORGOT PASSWORD");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Username:");
-
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
-            }
-        });
-
-        btnSend.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnSend.setText("Send");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Already have an account?");
 
-        txtSignIn.setBackground(new java.awt.Color(51, 51, 255));
-        txtSignIn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        txtSignIn.setForeground(new java.awt.Color(255, 255, 255));
-        txtSignIn.setText("SignIn");
-        txtSignIn.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtSignin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtSignin.setText("SignIn");
+        txtSignin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtSignInMouseClicked(evt);
+                txtSigninMouseClicked(evt);
             }
         });
+
+        btnSend.setText("Send");
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setText("Username:");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -94,39 +90,33 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jLabel4)
-                .addGap(57, 57, 57)
-                .addComponent(txtSignIn)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtUsername)
+                        .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(57, 57, 57)
+                            .addComponent(txtSignin)))
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(mainPanelLayout.createSequentialGroup()
-                    .addGap(99, 99, 99)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsername)
-                            .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                        .addComponent(jLabel2))
-                    .addContainerGap(100, Short.MAX_VALUE)))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtSignIn))
+                    .addComponent(txtSignin))
                 .addGap(90, 90, 90))
-            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(mainPanelLayout.createSequentialGroup()
-                    .addGap(89, 89, 89)
-                    .addComponent(jLabel2)
-                    .addGap(18, 18, 18)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(24, 24, 24)
-                    .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(125, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,32 +133,11 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
-
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String username = txtUsername.getText().trim();
-        txtUsername.setBackground(white);
-
-        if (username.isEmpty()) {
-            txtUsername.setBackground(Color.red);
-            JOptionPane.showMessageDialog(this, "Username không được để trống!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (username.equals("admin1") || username.equals("user1")) {
-            JOptionPane.showMessageDialog(this, "Mật khẩu mặc định là: 1234", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Username không tồn tại!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnSendActionPerformed
-
-    private void txtSignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSignInMouseClicked
+    private void txtSigninMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSigninMouseClicked
         LoginForm log = new LoginForm();
         log.show();
         this.dispose(); // Đóng form forgot password
-    }//GEN-LAST:event_txtSignInMouseClicked
+    }//GEN-LAST:event_txtSigninMouseClicked
 
     /**
      * @param args the command line arguments
@@ -211,7 +180,7 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JLabel txtSignIn;
+    private javax.swing.JLabel txtSignin;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
