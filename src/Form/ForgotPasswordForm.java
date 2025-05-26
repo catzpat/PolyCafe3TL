@@ -149,12 +149,9 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSigninMouseClicked
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-
+        JOptionPane.showMessageDialog(this, "Hãy kiểm tra email của bạn");
     }//GEN-LAST:event_btnSendActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
