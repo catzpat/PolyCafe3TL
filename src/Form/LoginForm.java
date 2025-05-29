@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.Icon;
 
 public class LoginForm extends javax.swing.JFrame {
 
@@ -24,9 +25,12 @@ public class LoginForm extends javax.swing.JFrame {
         txtRegister.setText("<html><u>Register</u></html>");
         txtForgot.setText("<html><u>Forgot password</u></html>");
         mainPanel.setBackground(new Color(20, 20, 20));
+        cbShow.setBackground(new Color(20, 20, 20));
         btnLogin.setBackground(new Color(40, 40, 40));
         btnLogin.setForeground(Color.WHITE);
         txtName.setBackground(white);
+        btnLogin.setFocusPainted(false);
+        cbShow.setFocusPainted(false);
 //        ----------------------------------------------------------------------
         // Set hover cho btnLogin
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,10 +98,12 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Desktop\\CNTT\\Orange\\MOB1024_Java2\\img\\User.png")); // NOI18N
         jLabel2.setText("Username:");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Desktop\\CNTT\\Orange\\MOB1024_Java2\\img\\Lock.png")); // NOI18N
         jLabel3.setText("Password:");
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +145,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        cbShow.setBackground(new java.awt.Color(0, 0, 0));
         cbShow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cbShow.setForeground(new java.awt.Color(255, 255, 255));
         cbShow.setText("Show password");
@@ -174,7 +181,7 @@ public class LoginForm extends javax.swing.JFrame {
                                         .addComponent(txtRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))))))
                 .addGap(0, 83, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -200,7 +207,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JLabel5)
                     .addComponent(txtRegister))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,41 +282,13 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbShowActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LoginForm().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginForm().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel5;
