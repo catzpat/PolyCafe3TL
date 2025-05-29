@@ -1,19 +1,24 @@
 package Form;
 
+import CafeDAO.DAO;
+import Model.User;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.sql.*;
 
 public class Admin_interface extends javax.swing.JFrame {
 
-    String userName = "";
+    String NameAccount = "";
     String img;
 
-    public Admin_interface(String userName, String img) {
-        this.userName = userName;
+    public Admin_interface(String NameAccount, String img) {
+        this.NameAccount = NameAccount;
         this.img = img;
         initComponents();
-        txtHello.setText(userName);
-//        ImageIcon icon = new ImageIcon("src/USER_IMG/admin1.jpg");
+        setLocationRelativeTo(null);
+//        ---------------------------------------------------------------------
+        DAO dao = new DAO();
+        User u = new User();
         ImageIcon icon = new ImageIcon("src/USER_IMG/" + img);
         Image image = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); // điều chỉnh kích thước nếu cần
         txtImg.setIcon(new ImageIcon(image));

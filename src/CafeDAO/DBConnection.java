@@ -1,12 +1,10 @@
 package CafeDAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=POLYCAFE4KL;encrypt=true    ";
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=PolyCafe4KL;encrypt=true;trustServerCertificate=true";
     private static final String USER = "sa";
     private static final String PASSWORD = "1234";
 
