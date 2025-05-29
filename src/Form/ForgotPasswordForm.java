@@ -25,6 +25,8 @@ public class ForgotPasswordForm extends javax.swing.JFrame {
     public ForgotPasswordForm() {
         initComponents();
         initLayout();
+        setTitle("4KL");
+        setLocationRelativeTo(null);
     }
 
     public void initLayout() {

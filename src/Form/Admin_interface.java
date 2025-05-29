@@ -15,6 +15,7 @@ public class Admin_interface extends javax.swing.JFrame {
         this.NameAccount = NameAccount;
         this.img = img;
         initComponents();
+        setTitle("4KL");
         setLocationRelativeTo(null);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();

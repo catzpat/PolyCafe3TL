@@ -9,6 +9,8 @@ public class Seller_interface extends javax.swing.JFrame {
     String img;
 
     public Seller_interface(String userName, String img) {
+        setTitle("4KL");
+        setLocationRelativeTo(null);
         this.userName = userName;
         this.img = img;
         initComponents();
