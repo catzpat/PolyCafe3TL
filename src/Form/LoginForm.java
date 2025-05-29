@@ -14,13 +14,13 @@ import javax.swing.UIManager;
 import javax.swing.Icon;
 
 public class LoginForm extends javax.swing.JFrame {
-
+    
     public LoginForm() {
         initComponents();
         initLayout();
         setLocationRelativeTo(null);
     }
-
+    
     public void initLayout() {
         txtRegister.setText("<html><u>Register</u></html>");
         txtForgot.setText("<html><u>Forgot password</u></html>");
@@ -37,7 +37,7 @@ public class LoginForm extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnLogin.setBackground(new Color(70, 130, 180));
             }
-
+            
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnLogin.setBackground(new Color(40, 40, 40));
             }
@@ -48,23 +48,23 @@ public class LoginForm extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtRegister.setForeground(new Color(70, 130, 180));
             }
-
+            
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtRegister.setForeground(Color.WHITE);
             }
         });
-
+        
         txtForgot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtForgot.setForeground(new Color(70, 130, 180));
             }
-
+            
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtForgot.setForeground(Color.WHITE);
             }
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -227,22 +227,22 @@ public class LoginForm extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String userName = txtName.getText().trim();
         String passWord = txtPW.getText().trim();
-
+        
         txtName.setBackground(white);
         txtPW.setBackground(white);
-
+        
         if (userName.isEmpty()) {
             txtName.setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         if (passWord.isEmpty()) {
             txtPW.setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         if (userName.equals("admin1") && passWord.equals("1234")) {
             new Admin_interface(userName, "admin1.jpg").setVisible(true);
             this.dispose();
@@ -281,14 +281,14 @@ public class LoginForm extends javax.swing.JFrame {
             txtPW.setEchoChar('*'); // Ẩn lại mật khẩu
         }
     }//GEN-LAST:event_cbShowActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginForm().setVisible(true);
-            }
-        });
-    }
+    
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new LoginForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel5;
