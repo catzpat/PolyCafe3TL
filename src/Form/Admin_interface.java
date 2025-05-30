@@ -19,9 +19,9 @@ public class Admin_interface extends javax.swing.JFrame {
         setTitle("4KL_Admin");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
+        txtUserName.setText("Hello, " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
-        txtUserName.setText(NameAccount);
     }
 
     @SuppressWarnings("unchecked")

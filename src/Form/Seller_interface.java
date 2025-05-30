@@ -16,9 +16,10 @@ public class Seller_interface extends javax.swing.JFrame {
         setTitle("4KL_Seller");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
+        txtUserName.setText("Hello, " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
-        txtUserName.setText(NameAccount);
+        
 //        ImageIcon icon = new ImageIcon("src/USER_IMG/admin1.jpg");
 //        ImageIcon icon = new ImageIcon("src/USER_IMG/" + img);
 //        Image image = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); // điều chỉnh kích thước nếu cần
