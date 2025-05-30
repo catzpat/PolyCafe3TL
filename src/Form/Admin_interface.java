@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.sql.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Admin_interface extends javax.swing.JFrame {
 
@@ -15,9 +17,10 @@ public class Admin_interface extends javax.swing.JFrame {
         this.NameAccount = NameAccount;
         initComponents();
         setTitle("4KL_Admin");
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
-        DAO dao = new DAO();
 //        ---------------------------------------------------------------------
+        DAO dao = new DAO();
         txtUserName.setText(NameAccount);
     }
 
@@ -52,9 +55,6 @@ public class Admin_interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -82,7 +82,7 @@ public class Admin_interface extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new Admin_interface().setVisible(true);
+//                new Admin_interface("").setVisible(true);
 //            }
 //        });
 //    }
