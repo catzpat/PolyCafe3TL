@@ -7,15 +7,16 @@ public class DAO {
 
     public User login(String NameAccount, String PasswordAccount) {
         try (Connection c = DBConnection.connect()) {
-            String query = "SELECT * FROM Account WHERE NameAccount = ? AND PasswordAccount = ? AND AccountStatus = 0";
-            PreparedStatement stmt = c.prepareStatement(query);
-            stmt.setString(1, NameAccount);
-            stmt.setString(2, PasswordAccount);
-            ResultSet rs = stmt.executeQuery();
+            String query = "SELECT * FROM V_Account WHERE NameAccount = ? AND PasswordAccount = ? AND AccountStatus = 0";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, NameAccount);
+            ps.setString(2, PasswordAccount);
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 User u = new User();
                 u.setNameAccount(rs.getString("NameAccount"));
                 u.setPasswordAccount(rs.getString("PasswordAccount"));
+                u.setRoleAccount(rs.getString("RoleAccount"));
                 return u;
             }
         } catch (Exception e) {
@@ -24,8 +25,5 @@ public class DAO {
         }
         return null;
     }
-    
-    public String getPhoto(String img) {
-        return img;
+
     }
-}

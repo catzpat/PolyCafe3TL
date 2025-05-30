@@ -2,61 +2,50 @@ package Form;
 
 import CafeDAO.DAO;
 import Model.User;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.sql.*;
 
 public class Admin_interface extends javax.swing.JFrame {
 
-    String NameAccount = "";
-    String img;
+    private String NameAccount = "";
 
-    public Admin_interface(String NameAccount, String img) {
+    public Admin_interface(String NameAccount) {
         this.NameAccount = NameAccount;
-        this.img = img;
         initComponents();
-        setTitle("4KL");
+        setTitle("4KL_Admin");
         setLocationRelativeTo(null);
-//        ---------------------------------------------------------------------
         DAO dao = new DAO();
-        User u = new User();
-        ImageIcon icon = new ImageIcon("src/USER_IMG/" + img);
-        Image image = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); // điều chỉnh kích thước nếu cần
-        txtImg.setIcon(new ImageIcon(image));
+//        ---------------------------------------------------------------------
+        txtUserName.setText(NameAccount);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtHello = new javax.swing.JLabel();
-        txtImg = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtHello.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtHello.setText("jLabel1");
-
-        txtImg.setText("jLabel1");
+        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtUserName.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(776, Short.MAX_VALUE)
-                .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtHello, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(831, Short.MAX_VALUE)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHello)
-                    .addComponent(txtImg))
+                .addComponent(txtUserName)
                 .addContainerGap(546, Short.MAX_VALUE))
         );
 
@@ -99,7 +88,6 @@ public class Admin_interface extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel txtHello;
-    private javax.swing.JLabel txtImg;
+    private javax.swing.JLabel txtUserName;
     // End of variables declaration//GEN-END:variables
 }

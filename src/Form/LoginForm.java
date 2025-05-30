@@ -226,52 +226,43 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-//        String userName = txtName.getText().trim();
-//        String passWord = txtPW.getText().trim();
-//        
-//        txtName.setBackground(white);
-//        txtPW.setBackground(white);
-//        
-//        if (userName.isEmpty()) {
-//            txtName.setBackground(Color.red);
-//            JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-//        
-//        if (passWord.isEmpty()) {
-//            txtPW.setBackground(Color.red);
-//            JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-//        
-//        if (userName.equals("admin1") && passWord.equals("1234")) {
-//            new Admin_interface(userName, "admin1.jpg").setVisible(true);
-//            this.dispose();
-//        } else if (userName.equals("admin2") && passWord.equals("1234")) {
-//            new Admin_interface(userName, "admin2.png").setVisible(true);
-//            this.dispose();
-//        } else if (userName.equals("user1") && passWord.equals("1234")) {
-//            new Seller_interface(userName, "user1.png").setVisible(true);
-//        } else if (userName.equals("user2") && passWord.equals("1234")) {
-//            new Seller_interface(userName, "user2.png").setVisible(true);
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Tài khoản không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-        String username = txtName.getText().trim();
-        String password = new String(txtPW.getPassword()).trim();
+        String NameAccount = txtName.getText().trim();
+        String PasswordAccount = new String(txtPW.getPassword()).trim();
 
-        DAO dao = new DAO();
-        User u = dao.login(username, password);
+        txtName.setBackground(white);
+        txtPW.setBackground(white);
 
-        if (u != null) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-            new Admin_interface(u.getUserName(), u.getImg()).setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng", "Error", JOptionPane.ERROR_MESSAGE);
-//        });
+        if (NameAccount.isEmpty()) {
+            txtName.setBackground(Color.red);
+            JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
+        if (PasswordAccount.isEmpty()) {
+            txtPW.setBackground(Color.red);
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        DAO dao = new DAO();
+        User user = dao.login(NameAccount, PasswordAccount);
+
+        if (user != null) {
+            String role = user.getRoleAccount();
+            if ("user".equalsIgnoreCase(role)) {
+                // Chuyển đến trang Seller
+                new Seller_interface(user.getNameAccount()).setVisible(true);
+                // Ẩn hoặc dispose trang Login nếu cần
+                this.dispose(); // nếu đang ở JFrame
+            } else if ("admin".equalsIgnoreCase(role)) {
+                new Admin_interface(user.getNameAccount()).setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Role không hợp lệ!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Tên đăng nhập hoặc mật khẩu không đúng", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked

@@ -24,10 +24,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="776" max="32767" attributes="0"/>
-              <Component id="txtImg" min="-2" pref="37" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtHello" min="-2" pref="70" max="-2" attributes="0"/>
+              <EmptySpace pref="831" max="32767" attributes="0"/>
+              <Component id="txtUserName" min="-2" pref="70" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -36,26 +34,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtHello" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtImg" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="txtUserName" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="546" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="txtHello">
+    <Component class="javax.swing.JLabel" name="txtUserName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="txtImg">
-      <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
