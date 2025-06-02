@@ -249,12 +249,12 @@ public class LoginForm extends javax.swing.JFrame {
 
         if (user != null) {
             String role = user.getRoleAccount();
-            if ("user".equalsIgnoreCase(role)) {
+            if ("User".equalsIgnoreCase(role)) {
                 // Chuyển đến trang Seller
                 new Seller_interface(user.getNameAccount()).setVisible(true);
                 // Ẩn hoặc dispose trang Login nếu cần
                 this.dispose(); // nếu đang ở JFrame
-            } else if ("admin".equalsIgnoreCase(role)) {
+            } else if ("Admin".equalsIgnoreCase(role)) {
                 new Admin_interface(user.getNameAccount()).setVisible(true);
                 this.dispose();
             } else {
