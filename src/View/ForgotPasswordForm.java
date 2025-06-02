@@ -1,6 +1,6 @@
-package Form;
+package View;
 
-import CafeDAO.DAO;
+import Controller.DAO;
 import Model.User;
 import java.awt.Color;
 import java.sql.*;

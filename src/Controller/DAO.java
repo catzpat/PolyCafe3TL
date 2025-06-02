@@ -1,4 +1,4 @@
-package CafeDAO;
+package Controller;
 
 import java.sql.*;
 import Model.User;

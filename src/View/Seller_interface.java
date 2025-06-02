@@ -1,6 +1,6 @@
-package Form;
+package View;
 
-import CafeDAO.DAO;
+import Controller.DAO;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
