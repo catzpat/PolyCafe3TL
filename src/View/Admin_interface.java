@@ -78,7 +78,8 @@ public class Admin_interface extends javax.swing.JFrame {
         for (String name : buttonNames) {
             JButton button = new JButton(name);
             button.setFocusPainted(false);
-            button.setBackground(Color.WHITE);
+            Color decodeColor = Color.decode("#eeeeee");
+            button.setBackground(Color.decode("#eeeeee"));
             button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             button.setPreferredSize(new Dimension(250, 40));  // kích thước nút
             panelMenu.add(button);
