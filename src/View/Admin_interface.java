@@ -26,22 +26,18 @@ public class Admin_interface extends javax.swing.JFrame {
         // Set layout chính của frame thành BorderLayout
         getContentPane().setLayout(new BorderLayout());
 
-        // Tạo container (Panel) Sidebar
-        JPanel panelSidebar = new JPanel();
+        JPanel panelSidebar = new JPanel(new BorderLayout());
         panelSidebar.setBackground(Color.WHITE);
         panelSidebar.setPreferredSize(new Dimension(250, getHeight()));
-        panelSidebar.setLayout(new BorderLayout());
 
-        // Panel chứa User Info
+        // User Info Panel
         JPanel panelUserInfo = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
         panelUserInfo.setBackground(Color.WHITE);
 
-        // Avatar
         ImageIcon avatarIcon = new ImageIcon("src/USER_IMG/default.jpg");
         Image scaledImage = avatarIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         JLabel lblAvatar = new JLabel(new ImageIcon(scaledImage));
 
-        // Tên user
         JLabel txtUserName = new JLabel(NameAccount);
         txtUserName.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
@@ -52,9 +48,8 @@ public class Admin_interface extends javax.swing.JFrame {
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.BLACK);
 
-        // Panel chứa các nút Menu
-        JPanel panelMenu = new JPanel();
-        panelMenu.setLayout(new GridLayout(6, 1, 0, 10));
+        // Menu Buttons
+        JPanel panelMenu = new JPanel(new GridLayout(6, 1, 0, 10));
         panelMenu.setBackground(Color.WHITE);
         panelMenu.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -69,36 +64,112 @@ public class Admin_interface extends javax.swing.JFrame {
 
         for (String name : buttonNames) {
             JButton button = new JButton(name);
-            button.setFocusPainted(false); // Bỏ khoanh vùng chữ
+            button.setFocusPainted(false);
             button.setBackground(Color.decode("#eeeeee"));
             button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            button.setPreferredSize(new Dimension(80, 60)); // tăng chiều cao btn\
+            button.setPreferredSize(new Dimension(80, 60));
+
             button.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     button.setBackground(new Color(70, 130, 180));
+                    button.setForeground(Color.WHITE);
                 }
 
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     button.setBackground(Color.WHITE);
+                    button.setForeground(Color.BLACK);
                 }
             });
+
             panelMenu.add(button);
         }
-        // Tạo 1 container chứa 3 phần trên
-        JPanel panelContainer = new JPanel();
-        panelContainer.setLayout(new BoxLayout(panelContainer, BoxLayout.Y_AXIS));
-        panelContainer.setBackground(Color.WHITE);
 
-        panelContainer.add(panelUserInfo);
-        panelContainer.add(separator);
-        panelContainer.add(panelMenu);
+        // Sidebar container
+        JPanel SlidebarContainer = new JPanel();
+        SlidebarContainer.setLayout(new BoxLayout(SlidebarContainer, BoxLayout.Y_AXIS));
+        SlidebarContainer.setBackground(Color.WHITE);
+        SlidebarContainer.add(panelUserInfo);
+        SlidebarContainer.add(separator);
+        SlidebarContainer.add(panelMenu);
 
-        // Thêm panelContainer vào panelSidebar
-        panelSidebar.add(panelContainer, BorderLayout.NORTH);
-
-        // Thêm panelSidebar vào frame
+        panelSidebar.add(SlidebarContainer, BorderLayout.NORTH);
         getContentPane().add(panelSidebar, BorderLayout.WEST);
 
+        // Main content
+        JPanel mainContainer = new JPanel(new GridLayout(2, 2));
+
+        JPanel topContainer = new JPanel(new GridBagLayout());
+        JPanel topLeft = new JPanel();
+        topLeft.setBackground(Color.GRAY);
+        JPanel topRight = new JPanel();
+        topRight.setBackground(Color.ORANGE);
+
+        GridBagConstraints gbcTop = new GridBagConstraints();
+        gbcTop.fill = GridBagConstraints.BOTH;
+        gbcTop.gridy = 0;
+        gbcTop.weighty = 1;
+
+        // Left (60%)
+        gbcTop.gridx = 0;
+        gbcTop.weightx = 0.6;
+        topContainer.add(topLeft, gbcTop);
+
+        // Right (40%)
+        gbcTop.gridx = 1;
+        gbcTop.weightx = 0.4;
+        topContainer.add(topRight, gbcTop);
+
+// --------------------------Bottom Container
+        JPanel bottomContainer = new JPanel(new GridBagLayout());
+        JPanel bottomLeft = new JPanel();
+        bottomLeft.setBackground(Color.cyan);
+        JPanel bottomRight = new JPanel();
+        bottomRight.setBackground(Color.GREEN);
+
+        GridBagConstraints gbcBottom = new GridBagConstraints();
+        gbcBottom.fill = GridBagConstraints.BOTH;
+        gbcBottom.gridy = 0;
+        gbcBottom.weighty = 1;
+
+        // Left (70%)
+        gbcBottom.gridx = 0;
+        gbcBottom.weightx = 0.7;
+        bottomContainer.add(bottomLeft, gbcBottom);
+
+        // Right (30%)
+        gbcBottom.gridx = 1;
+        gbcBottom.weightx = 0.3;
+        bottomContainer.add(bottomRight, gbcBottom);
+
+// ------------------------------------------------------------------
+// Bảng thông tin hóa đơn
+        Label mainText = new Label("Thông tin hóa đơn");
+        mainText.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        topLeft.setLayout(new BoxLayout(topLeft, BoxLayout.Y_AXIS)); // sắp xếp dọc
+        topLeft.add(mainText);
+        Object[][] data = {
+            {"Sản phẩm A", "100.000", 2},
+            {"Sản phẩm B", "150.000", 1},
+            {"Sản phẩm C", "50.000", 5}
+        };
+        // Tên cột
+        String[] columnNames = {"Tên", "Giá", "Số lượng"};
+
+        // Tạo bảng
+        JTable table = new JTable(data, columnNames);
+
+        // Bọc bảng trong JScrollPane để có thể cuộn nếu dữ liệu dài
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        // Set kích thước hoặc layout cho scrollPane nếu cần
+        scrollPane.setPreferredSize(new Dimension(100, 50)); // bạn có thể điều chỉnh
+
+        topLeft.add(scrollPane);
+// ------------------------------------------------------------------
+        mainContainer.add(topContainer);
+        mainContainer.add(bottomContainer);
+
+        getContentPane().add(mainContainer, BorderLayout.CENTER);
     }
 
     @SuppressWarnings("unchecked")
@@ -111,11 +182,11 @@ public class Admin_interface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 907, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         pack();
