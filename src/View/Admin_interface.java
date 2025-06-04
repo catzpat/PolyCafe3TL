@@ -26,45 +26,37 @@ public class Admin_interface extends javax.swing.JFrame {
         // Set layout chính của frame thành BorderLayout
         getContentPane().setLayout(new BorderLayout());
 
-        // Tạo contaner (Panel) Slidebar 
+        // Tạo container (Panel) Sidebar
         JPanel panelSidebar = new JPanel();
         panelSidebar.setBackground(Color.WHITE);
-        // Tạo đối tượng Dimension (Kích thước) cho panelSlidebar
-        panelSidebar.setPreferredSize(new Dimension(250, getHeight())); // chiều rộng 250px, chiều cao = chiều cao của chương trinh
-        panelSidebar.setLayout(new BorderLayout());  // Thiết lập dòng kẻ ở bottom 
+        panelSidebar.setPreferredSize(new Dimension(250, getHeight()));
+        panelSidebar.setLayout(new BorderLayout());
 
-        // Thêm panelSidebar vào bên trái (WEST)
-        getContentPane().add(panelSidebar, BorderLayout.WEST);
-//          ---------------- Panel in top (Account Inf) ----------------
-        JPanel panelUserInfo = new JPanel();
+        // Panel chứa User Info
+        JPanel panelUserInfo = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
         panelUserInfo.setBackground(Color.WHITE);
-        panelUserInfo.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20)); // căn lề trái + padding
 
         // Avatar
         ImageIcon avatarIcon = new ImageIcon("src/USER_IMG/default.jpg");
-        // Scale image vừa với JLabel (40x40)
         Image scaledImage = avatarIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         JLabel lblAvatar = new JLabel(new ImageIcon(scaledImage));
 
         // Tên user
         JLabel txtUserName = new JLabel(NameAccount);
         txtUserName.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        // set Tên cho user
-        txtUserName.setText(NameAccount);
 
-        // Thêm avatar và tên vào panelUserInfo
         panelUserInfo.add(lblAvatar);
         panelUserInfo.add(txtUserName);
 
-        // Tạo đường kẻ đen (separator)
+        // Separator
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.BLACK);
-        separator.setPreferredSize(new Dimension(5, 5));
-//        -- Tạo Btn trong slidebar
+
+        // Panel chứa các nút Menu
         JPanel panelMenu = new JPanel();
-        panelMenu.setLayout(new GridLayout(6, 1, 0, 10)); // 6 hàng, 1 cột, khoảng cách dọc 10px
+        panelMenu.setLayout(new GridLayout(6, 1, 0, 10));
         panelMenu.setBackground(Color.WHITE);
-        panelMenu.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // padding bên trong
+        panelMenu.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         String[] buttonNames = {
             "Trang chủ",
@@ -72,27 +64,39 @@ public class Admin_interface extends javax.swing.JFrame {
             "Quản Lý SP",
             "Quản Lý DH",
             "Quản Lý NV",
-            "Thống Kê" 
+            "Thống Kê"
         };
 
         for (String name : buttonNames) {
             JButton button = new JButton(name);
-            button.setFocusPainted(false);
+            button.setFocusPainted(false); // Bỏ khoanh vùng chữ
             button.setBackground(Color.decode("#eeeeee"));
             button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            button.setPreferredSize(new Dimension(250, 40));  // kích thước nút
+            button.setPreferredSize(new Dimension(80, 60)); // tăng chiều cao btn\
+            button.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    button.setBackground(new Color(70, 130, 180));
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    button.setBackground(Color.WHITE);
+                }
+            });
             panelMenu.add(button);
         }
+        // Tạo 1 container chứa 3 phần trên
+        JPanel panelContainer = new JPanel();
+        panelContainer.setLayout(new BoxLayout(panelContainer, BoxLayout.Y_AXIS));
+        panelContainer.setBackground(Color.WHITE);
 
-        // Thêm các phần vào panelSidebar theo thứ tự
-        panelSidebar.add(panelUserInfo, BorderLayout.NORTH);
-        panelSidebar.add(separator, BorderLayout.CENTER);
-        panelSidebar.add(panelMenu, BorderLayout.SOUTH);
-        // ---------------- Thêm vào panelSlidebar ----------------
-        panelSidebar.add(panelUserInfo, BorderLayout.NORTH); // top
-        panelSidebar.add(separator, BorderLayout.CENTER); // separator ở dưới panelUserInfo
+        panelContainer.add(panelUserInfo);
+        panelContainer.add(separator);
+        panelContainer.add(panelMenu);
 
-        // ---------------- Thêm panelSidebar vào frame ----------------
+        // Thêm panelContainer vào panelSidebar
+        panelSidebar.add(panelContainer, BorderLayout.NORTH);
+
+        // Thêm panelSidebar vào frame
         getContentPane().add(panelSidebar, BorderLayout.WEST);
 
     }
