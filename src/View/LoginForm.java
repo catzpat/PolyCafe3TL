@@ -92,12 +92,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Desktop\\CNTT\\Orange\\MOB1024_Java2\\img\\User.png")); // NOI18N
         jLabel2.setText("Username:");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Desktop\\CNTT\\Orange\\MOB1024_Java2\\img\\Lock.png")); // NOI18N
         jLabel3.setText("Password:");
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +199,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JLabel5)
                     .addComponent(txtRegister))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

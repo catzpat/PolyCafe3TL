@@ -72,13 +72,12 @@ public class Admin_interface extends javax.swing.JFrame {
             "Quản Lý SP",
             "Quản Lý DH",
             "Quản Lý NV",
-            "Thống Kê"
+            "Thống Kê" 
         };
 
         for (String name : buttonNames) {
             JButton button = new JButton(name);
             button.setFocusPainted(false);
-            Color decodeColor = Color.decode("#eeeeee");
             button.setBackground(Color.decode("#eeeeee"));
             button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
             button.setPreferredSize(new Dimension(250, 40));  // kích thước nút
@@ -92,7 +91,7 @@ public class Admin_interface extends javax.swing.JFrame {
         // ---------------- Thêm vào panelSlidebar ----------------
         panelSidebar.add(panelUserInfo, BorderLayout.NORTH); // top
         panelSidebar.add(separator, BorderLayout.CENTER); // separator ở dưới panelUserInfo
-        
+
         // ---------------- Thêm panelSidebar vào frame ----------------
         getContentPane().add(panelSidebar, BorderLayout.WEST);
 
