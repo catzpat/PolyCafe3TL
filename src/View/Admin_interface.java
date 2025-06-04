@@ -31,8 +31,8 @@ public class Admin_interface extends javax.swing.JFrame {
         panelSidebar.setBackground(Color.WHITE);
         // Tạo đối tượng Dimension (Kích thước) cho panelSlidebar
         panelSidebar.setPreferredSize(new Dimension(250, getHeight())); // chiều rộng 250px, chiều cao = chiều cao của chương trinh
-        panelSidebar.setLayout(new BorderLayout());  
-        
+        panelSidebar.setLayout(new BorderLayout());  // Thiết lập dòng kẻ ở bottom 
+
         // Thêm panelSidebar vào bên trái (WEST)
         getContentPane().add(panelSidebar, BorderLayout.WEST);
 //          ---------------- Panel in top (Account Inf) ----------------
@@ -60,12 +60,38 @@ public class Admin_interface extends javax.swing.JFrame {
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.BLACK);
         separator.setPreferredSize(new Dimension(5, 5));
+//        -- Tạo Btn trong slidebar
+        JPanel panelMenu = new JPanel();
+        panelMenu.setLayout(new GridLayout(6, 1, 0, 10)); // 6 hàng, 1 cột, khoảng cách dọc 10px
+        panelMenu.setBackground(Color.WHITE);
+        panelMenu.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // padding bên trong
 
+        String[] buttonNames = {
+            "Trang chủ",
+            "Bán hàng",
+            "Quản Lý SP",
+            "Quản Lý DH",
+            "Quản Lý NV",
+            "Thống Kê"
+        };
 
+        for (String name : buttonNames) {
+            JButton button = new JButton(name);
+            button.setFocusPainted(false);
+            button.setBackground(Color.WHITE);
+            button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            button.setPreferredSize(new Dimension(250, 40));  // kích thước nút
+            panelMenu.add(button);
+        }
+
+        // Thêm các phần vào panelSidebar theo thứ tự
+        panelSidebar.add(panelUserInfo, BorderLayout.NORTH);
+        panelSidebar.add(separator, BorderLayout.CENTER);
+        panelSidebar.add(panelMenu, BorderLayout.SOUTH);
         // ---------------- Thêm vào panelSlidebar ----------------
         panelSidebar.add(panelUserInfo, BorderLayout.NORTH); // top
         panelSidebar.add(separator, BorderLayout.CENTER); // separator ở dưới panelUserInfo
-
+        
         // ---------------- Thêm panelSidebar vào frame ----------------
         getContentPane().add(panelSidebar, BorderLayout.WEST);
 
