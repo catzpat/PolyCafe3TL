@@ -2,16 +2,9 @@ package View;
 
 import Controller.DAO;
 import Model.User;
-import java.awt.Color;
+import java.awt.*;
 import static java.awt.Color.white;
-import java.awt.Font;
-import java.awt.Image;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.Icon;
+import javax.swing.*;
 
 public class LoginForm extends javax.swing.JFrame {
 
