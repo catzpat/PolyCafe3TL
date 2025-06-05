@@ -100,9 +100,9 @@ public class Admin_interface extends javax.swing.JFrame {
 
         JPanel topContainer = new JPanel(new GridBagLayout());
         JPanel topLeft = new JPanel();
-        topLeft.setBackground(Color.GRAY);
+//        topLeft.setBackground(Color.GRAY);
         JPanel topRight = new JPanel();
-        topRight.setBackground(Color.ORANGE);
+//        topRight.setBackground(Color.ORANGE);
 
         GridBagConstraints gbcTop = new GridBagConstraints();
         gbcTop.fill = GridBagConstraints.BOTH;
@@ -123,9 +123,9 @@ public class Admin_interface extends javax.swing.JFrame {
 //        ------------------- Bottom Container
         JPanel bottomContainer = new JPanel(new GridBagLayout());
         JPanel bottomLeft = new JPanel();
-        bottomLeft.setBackground(Color.cyan);
+//        bottomLeft.setBackground(Color.cyan);
         JPanel bottomRight = new JPanel();
-        bottomRight.setBackground(Color.GREEN);
+//        bottomRight.setBackground(Color.GREEN);
 
         GridBagConstraints gbcBottom = new GridBagConstraints();
         gbcBottom.fill = GridBagConstraints.BOTH;
@@ -153,18 +153,18 @@ public class Admin_interface extends javax.swing.JFrame {
 // Tạo panel bọc mainText để thêm padding nếu muốn
         JPanel panelTitle = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5)); // canh trái, padding 10,5
         panelTitle.add(mainText);
-        panelTitle.setBackground(Color.GRAY); // giữ màu nền
+//        panelTitle.setBackground(Color.GRAY); // giữ màu nền
 
 // Thêm panelTitle lên topLeft phía trên
         topLeft.add(panelTitle, BorderLayout.NORTH);
 
         Object[][] data = {
-            {"Sản phẩm A", "100.000", 2},
-            {"Sản phẩm B", "150.000", 1},
-            {"Sản phẩm C", "50.000", 5}
+            {"Sản phẩm A", 2, "100.000"},
+            {"Sản phẩm B", 1, "150.000"},
+            {"Sản phẩm C", 5, "50.000"}
         };
 // Tên cột
-        String[] columnNames = {"Tên", "Giá", "Số lượng"};
+        String[] columnNames = {"Tên Món", "Số Lượng", "Giá"};
 
 // Tạo bảng
         JTable table = new JTable(data, columnNames);
@@ -186,7 +186,7 @@ public class Admin_interface extends javax.swing.JFrame {
 // Tạo panel bọc mainText để thêm padding nếu muốn
         JPanel panelTitle2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5)); // canh trái, padding 10,5
         panelTitle2.add(mainText2);
-        panelTitle2.setBackground(Color.YELLOW); // giữ màu nền
+//        panelTitle2.setBackground(Color.YELLOW); // giữ màu nền
 
 // Thêm panelTitle lên topLeft phía trên
         topRight.add(panelTitle2, BorderLayout.NORTH);
@@ -214,12 +214,12 @@ public class Admin_interface extends javax.swing.JFrame {
 
 // Panel chứa tiêu đề
         JPanel panelTitle3 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
-        panelTitle3.setBackground(Color.cyan); // cùng màu với bottomLeft
+//        panelTitle3.setBackground(Color.cyan); // cùng màu với bottomLeft
         panelTitle3.add(mainText3);
 
 // Panel danh sách sản phẩm (2 cột)
         JPanel productListPanel = new JPanel(new GridLayout(0, 2, 10, 10));
-        productListPanel.setBackground(Color.cyan);
+//        productListPanel.setBackground(Color.cyan);
 
 // Danh sách sản phẩm mẫu
         String[] productNames = {"Trà sữa chân châu hoàn gia", "Nước Cam Ép", "Caffe", "Capuchino", "Nước Cam Ép 2.0", "Nước Ép Dưa Hấu"};
