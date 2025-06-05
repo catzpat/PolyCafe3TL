@@ -30,19 +30,13 @@ public class Seller_interface extends javax.swing.JFrame {
         this.NameAccount = NameAccount;
         initComponents();
         initUI();
-        btnMoi.doClick();
+        btnMoi.doClick(); 
         setTitle("4KL_Seller");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
         txtUserName.setText("Xin Chao, " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
-
-        // Xóa dòng có sẵn trong bảng ngay khi mở
-        DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
-        modelHDC.setRowCount(0);
-        DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
-        model.setRowCount(0);
 
         // Set mặc định jTextField về 0
         jTextField1.setText("0");
@@ -1210,9 +1204,11 @@ public class Seller_interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
-        // xóa bảng thông tin hóa đơn
+        //Xóa dòng rỗng ở bảng khi bắt đầu chạy
         DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
         model.setRowCount(0);
+        DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
+        modelHDC.setRowCount(0);
 
         // reset các ô tổng tiền
         jTextField1.setText("0");
