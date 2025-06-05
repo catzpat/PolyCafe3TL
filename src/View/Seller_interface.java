@@ -1,9 +1,8 @@
 package View;
 
 import Controller.DAO;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.*;
 
 public class Seller_interface extends javax.swing.JFrame {
 
@@ -13,17 +12,85 @@ public class Seller_interface extends javax.swing.JFrame {
 
         this.NameAccount = NameAccount;
         initComponents();
+        initUI();
         setTitle("4KL_Seller");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
         txtUserName.setText("Hello, " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
-        
+
 //        ImageIcon icon = new ImageIcon("src/USER_IMG/admin1.jpg");
 //        ImageIcon icon = new ImageIcon("src/USER_IMG/" + img);
 //        Image image = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); // điều chỉnh kích thước nếu cần
 //        txtImg.setIcon(new ImageIcon(image));
+    }
+
+    public void initUI() {
+        jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS)); // quan trọng
+        String[] productNames = {"Trà sữa chân châu hoàn gia", "Nước Cam Ép", "Caffe", "Capuchino", "Nước Cam Ép 2.0", "Nước Ép Dưa Hấu"};
+        String[] productPrices = {"100.000 đ", "200.000 đ", "150.000 đ", "80.000 đ", "120.000 đ", "97.000 đ"};
+
+        for (int i = 0; i < productNames.length; i++) {
+            JPanel productPanel = new JPanel(new BorderLayout(10, 10));
+            productPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+            productPanel.setBackground(Color.WHITE);
+
+            // Ảnh sản phẩm
+            String imagePath = "src/STOCK_img/img" + (i + 1) + ".jpg";
+            ImageIcon icon = new ImageIcon(imagePath);
+            Image img = icon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH);
+            JLabel lblImage = new JLabel(new ImageIcon(img));
+            productPanel.add(lblImage, BorderLayout.WEST);
+            lblImage.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+            // Phần thông tin
+            JPanel rightPanel = new JPanel(new BorderLayout());
+            rightPanel.setBackground(Color.WHITE);
+
+            JPanel namePricePanel = new JPanel();
+            namePricePanel.setLayout(new BoxLayout(namePricePanel, BoxLayout.Y_AXIS));
+            namePricePanel.setBackground(Color.WHITE);
+            JLabel lblName = new JLabel(productNames[i]);
+            lblName.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            JLabel lblPrice = new JLabel(productPrices[i]);
+            lblPrice.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+            namePricePanel.add(lblName);
+            namePricePanel.add(lblPrice);
+            rightPanel.add(namePricePanel, BorderLayout.NORTH);
+
+            JPanel quantityPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+            quantityPanel.setBackground(Color.WHITE);
+            JButton btnMinus = new JButton("-");
+            JButton btnPlus = new JButton("+");
+            JLabel lblQuantity = new JLabel("0");
+            lblQuantity.setPreferredSize(new Dimension(30, 20));
+            lblQuantity.setHorizontalAlignment(SwingConstants.CENTER);
+
+            btnMinus.addActionListener(e -> {
+                int current = Integer.parseInt(lblQuantity.getText());
+                if (current > 0) {
+                    lblQuantity.setText(String.valueOf(current - 1));
+                }
+            });
+            btnPlus.addActionListener(e -> {
+                int current = Integer.parseInt(lblQuantity.getText());
+                lblQuantity.setText(String.valueOf(current + 1));
+            });
+
+            quantityPanel.add(btnMinus);
+            quantityPanel.add(lblQuantity);
+            quantityPanel.add(btnPlus);
+
+            rightPanel.add(quantityPanel, BorderLayout.SOUTH);
+            productPanel.add(rightPanel, BorderLayout.CENTER);
+
+            jPanel3.add(productPanel);
+            jPanel3.add(Box.createRigidArea(new Dimension(0, 10))); // khoảng cách giữa các sản phẩm
+        }
+
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -107,7 +174,7 @@ public class Seller_interface extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(929, Short.MAX_VALUE))
         );
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,7 +289,7 @@ public class Seller_interface extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 894, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel9))

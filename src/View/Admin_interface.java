@@ -329,7 +329,7 @@ public class Admin_interface extends javax.swing.JFrame {
 
         // Nút "Tổng tiền"
         bottomRight.add(Box.createVerticalStrut(20));
-        JButton btnTinhTong = new JButton("Tổng tiền");  
+        JButton btnTinhTong = new JButton("Tổng tiền");
         btnTinhTong.setAlignmentX(Component.LEFT_ALIGNMENT);
         bottomRight.add(btnTinhTong);
 
