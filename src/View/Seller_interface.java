@@ -30,13 +30,19 @@ public class Seller_interface extends javax.swing.JFrame {
         this.NameAccount = NameAccount;
         initComponents();
         initUI();
-        btnMoi.doClick(); 
+        btnMoi.doClick();
         setTitle("4KL_Seller");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
         txtUserName.setText("Xin Chao, " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
+
+        //Xóa dòng rỗng ở bảng khi bắt đầu chạy
+        DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
+        model.setRowCount(0);
+        DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
+        modelHDC.setRowCount(0);
 
         // Set mặc định jTextField về 0
         jTextField1.setText("0");
@@ -1204,12 +1210,6 @@ public class Seller_interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
-        //Xóa dòng rỗng ở bảng khi bắt đầu chạy
-        DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
-        model.setRowCount(0);
-        DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
-        modelHDC.setRowCount(0);
-
         // reset các ô tổng tiền
         jTextField1.setText("0");
         jTextField2.setText("0");
@@ -1289,18 +1289,17 @@ public class Seller_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnthanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhToanActionPerformed
-        // kiểm tra hóa đơn có sản phẩm hay không
-        if (Integer.parseInt(jTextField1.getText()) == 0) {
+        String tongTienStr = jTextField1.getText().replace(" ", "");
+        if (Integer.parseInt(tongTienStr) == 0) {
             JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
             return;
         }
 
-        int thanhToan = Integer.parseInt(jTextField3.getText());
+        int thanhToan = Integer.parseInt(jTextField3.getText().replace(" ", ""));
         int tienMat = 0;
 
-        // xử lý nếu có nhập tiền mặt (Trong trường hợp tiền mặt ít hơn số tiền cần thành toán)
         try {
-            String tienMatStr = jTextField4.getText().trim();
+            String tienMatStr = jTextField4.getText().replace(" ", "").trim();
             if (!tienMatStr.isEmpty()) {
                 tienMat = Integer.parseInt(tienMatStr);
                 if (tienMat < thanhToan) {
@@ -1313,18 +1312,18 @@ public class Seller_interface extends javax.swing.JFrame {
             return;
         }
 
-        // thông báo và reset hóa đơn sau khi thanh toán
         JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
         btnMoiActionPerformed(evt); // reset sau thanh toán
     }//GEN-LAST:event_btnthanhToanActionPerformed
 
     private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
-        if (Integer.parseInt(jTextField1.getText()) == 0) {
+        String tongTienStr = jTextField1.getText().replace(" ", "");
+        if (Integer.parseInt(tongTienStr) == 0) {
             JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
             return;
         }
 
-        JOptionPane.showMessageDialog(this, "Đã in hóa đơn.");
+        JOptionPane.showMessageDialog(this, "Đã in hóa đơn!");
         btnMoi.doClick(); // reset sau khi in
     }//GEN-LAST:event_btnInActionPerformed
 
