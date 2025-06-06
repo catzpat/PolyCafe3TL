@@ -201,21 +201,19 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="pnlSP6" min="-2" pref="410" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="pnlSP5" min="-2" pref="410" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="pnlSP6" min="-2" pref="410" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="pnlSP4" min="-2" pref="410" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="pnlSP3" min="-2" pref="410" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="pnlSP1" min="-2" pref="410" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="pnlSP2" min="-2" pref="410" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="pnlSP1" min="-2" pref="410" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="pnlSP2" min="-2" pref="410" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="pnlSP3" min="-2" pref="410" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="pnlSP4" min="-2" pref="410" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="837" max="32767" attributes="0"/>
@@ -231,14 +229,14 @@
                                   <Component id="pnlSP2" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="pnlSP4" max="32767" attributes="0"/>
-                                  <Component id="pnlSP3" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnlSP3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlSP4" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="pnlSP6" max="32767" attributes="0"/>
-                                  <Component id="pnlSP5" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnlSP5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlSP6" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="417" max="32767" attributes="0"/>
                           </Group>
@@ -324,7 +322,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="1"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP1">
@@ -428,7 +426,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="2"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP2">
@@ -532,7 +530,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="4"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP4">
@@ -636,7 +634,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="3"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP3">
@@ -740,7 +738,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="5"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP5">
@@ -844,7 +842,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tr&#xe0; s&#x1eef;a matcha"/>
+                            <Property name="text" type="java.lang.String" value="6"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblGiaSP6">

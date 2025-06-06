@@ -54,8 +54,19 @@ public class Seller_interface extends javax.swing.JFrame {
     }
 
     public void initUI() {
+
+        JButton[] buttons = {btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLNV, btnTK, jButton1, jButton2, jButton3, jButton4, jButton5, jButton6,
+            jButton7, jButton8, jButton9, jButton10, jButton11, jButton12};
+
+        // Duyệt qua từng nút và thiết lập focusPainted
+        for (JButton btn : buttons) {
+            btn.setFocusPainted(false);
+            btn.setBackground(Color.decode("#eeeeee"));
+//            btn.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        }
+        btnOrder.setBackground(Color.decode("#cceeff"));
         String[] tenSP = {
-            "Trà sữa", "Trà DCS", "Cà phê", "Cà Phê Sữa", "Nước ép dưa hấu", "Nước ép cam"
+            "Trà sữa", "Trà DCS", "Cà phê Sữa", "Cà Phê", "Nước ép Cam", "Nước ép dưa hấu"
         };
         String[] giaSP = {
             "30000", "25000", "20000", "35000", "22000", "28000"
@@ -124,19 +135,15 @@ public class Seller_interface extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = tblHDC.getSelectedRow();
                 if (row >= 0 && row < danhSachTam.size()) {
-                    // Lấy hóa đơn và tiền mặt đã lưu
                     Object[] item = danhSachTam.get(row);
                     Object[][] duLieu = (Object[][]) item[0];
                     int tienMat = (int) item[1];
 
-                    // Reset bảng hóa đơn
+                    // reset bảng TTHD
                     DefaultTableModel modelTTHD = (DefaultTableModel) tblTTHD.getModel();
                     modelTTHD.setRowCount(0);
 
-                    // Reset số lượng sản phẩm trên giao diện
-                    String[] danhSachSP = {
-                        "Trà sữa", "Trà DCS", "Cà phê", "Cà Phê Sữa", "Nước ép dưa hấu", "Nước ép cam"
-                    };
+                    // reset số lượng sản phẩm
                     JLabel[] lblSLs = {
                         lblSLSP1, lblSLSP2, lblSLSP3,
                         lblSLSP4, lblSLSP5, lblSLSP6
@@ -145,11 +152,16 @@ public class Seller_interface extends javax.swing.JFrame {
                         lbl.setText("0");
                     }
 
-                    // Load lại sản phẩm vào bảng hóa đơn
+                    String[] danhSachSP = {
+                        "Trà sữa", "Trà DCS", "Cà phê Sữa", "Cà Phê", "Nước ép Cam", "Nước ép dưa hấu"
+                    };
+
+                    // load lại hóa đơn
                     for (Object[] dong : duLieu) {
                         modelTTHD.addRow(dong);
                         String tenSP = dong[0].toString();
                         int soLuong = Integer.parseInt(dong[2].toString());
+
                         for (int i = 0; i < danhSachSP.length; i++) {
                             if (danhSachSP[i].equals(tenSP)) {
                                 lblSLs[i].setText(String.valueOf(soLuong));
@@ -158,29 +170,21 @@ public class Seller_interface extends javax.swing.JFrame {
                         }
                     }
 
-                    //
+                    // gán lại tiền mặt
+                    jTextField4.setText(String.valueOf(tienMat));
+                    capNhatTienTraLai();
                     tinhTongTien();
 
-                    //Gán lại tiền mặt
-                    jTextField4.setText(String.valueOf(tienMat));
-
-                    //
-                    capNhatTienTraLai();
-
-                    //Xóa hóa đơn khỏi bảng chờ
-                    DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
-                    modelHDC.removeRow(row);
-                    danhSachTam.remove(row);
-
-                    // cập nhật ngày giờ và mã hóa đơn khi load từ hóa đơn chờ
+                    // cập nhật lại thời gian và mã hóa đơn mới
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
                     String thoiGian = LocalDateTime.now().format(formatter);
                     lblNgayGio.setText(thoiGian);
+                    lblMaHoaDon.setText("HD" + soHoaDon++);
 
-                    String maHD = "HD" + soHoaDon;
-                    lblMaHoaDon.setText(maHD);
-                    soHoaDon++;
-
+                    // xóa khỏi hàng chờ
+                    DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
+                    modelHDC.removeRow(row);
+                    danhSachTam.remove(row);
                 }
             }
         });
@@ -441,7 +445,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP1.setText("Trà sữa matcha");
+        lblTenSP1.setText("1");
 
         lblGiaSP1.setText("jLabel6");
 
@@ -505,7 +509,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP2.setText("Trà sữa matcha");
+        lblTenSP2.setText("2");
 
         lblGiaSP2.setText("jLabel6");
 
@@ -569,7 +573,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP4.setText("Trà sữa matcha");
+        lblTenSP4.setText("4");
 
         lblGiaSP4.setText("jLabel6");
 
@@ -633,7 +637,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP3.setText("Trà sữa matcha");
+        lblTenSP3.setText("3");
 
         lblGiaSP3.setText("jLabel6");
 
@@ -697,7 +701,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP5.setText("Trà sữa matcha");
+        lblTenSP5.setText("5");
 
         lblGiaSP5.setText("jLabel6");
 
@@ -761,7 +765,7 @@ public class Seller_interface extends javax.swing.JFrame {
         );
 
         lblTenSP6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblTenSP6.setText("Trà sữa matcha");
+        lblTenSP6.setText("6");
 
         lblGiaSP6.setText("jLabel6");
 
@@ -881,18 +885,17 @@ public class Seller_interface extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSPLayout.createSequentialGroup()
-                        .addComponent(pnlSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlSP5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlSP5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlSPLayout.createSequentialGroup()
-                            .addComponent(pnlSP4, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(pnlSP3, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlSPLayout.createSequentialGroup()
-                            .addComponent(pnlSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(pnlSP2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(pnlSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSPLayout.createSequentialGroup()
+                        .addComponent(pnlSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlSP2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSPLayout.createSequentialGroup()
+                        .addComponent(pnlSP3, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlSP4, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(837, Short.MAX_VALUE))
         );
         pnlSPLayout.setVerticalGroup(
@@ -903,13 +906,13 @@ public class Seller_interface extends javax.swing.JFrame {
                     .addComponent(pnlSP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlSP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlSP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlSP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlSP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlSP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlSP6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlSP5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlSP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlSP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(417, Short.MAX_VALUE))
         );
 
@@ -1250,7 +1253,7 @@ public class Seller_interface extends javax.swing.JFrame {
             return;
         }
 
-        // Sao lưu dữ liệu bảng hóa đơn hiện tại
+        // Lưu dữ liệu bảng TTHD
         Object[][] duLieu = new Object[modelTTHD.getRowCount()][4];
         for (int i = 0; i < modelTTHD.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
@@ -1258,33 +1261,94 @@ public class Seller_interface extends javax.swing.JFrame {
             }
         }
 
+        // Lưu tiền mặt
         int tienMat = 0;
         try {
-            tienMat = Integer.parseInt(jTextField4.getText());
+            tienMat = Integer.parseInt(jTextField4.getText().replace(" ", ""));
         } catch (NumberFormatException e) {
             tienMat = 0;
         }
+
+        // Thêm vào danh sách tạm
         danhSachTam.add(new Object[]{duLieu, tienMat});
 
-        // Thêm vào bảng chờ
-        String maHD = "HD" + (tblHDC.getRowCount() + 1);
+        // Tạo mã hóa đơn và thêm vào bảng HDC
+        String maHD = "HD" + soHoaDon++;
         String thoiGian = java.time.LocalTime.now().withNano(0).toString();
         String nhanVien = NameAccount;
+
         DefaultTableModel modelHDC = (DefaultTableModel) tblHDC.getModel();
         modelHDC.addRow(new Object[]{maHD, thoiGian, nhanVien});
 
+        // Thông báo
         JOptionPane.showMessageDialog(this, "Đã chuyển hóa đơn vào hàng chờ!");
-        btnMoi.doClick();
+
+        // --- RESET HÓA ĐƠN HIỆN TẠI (tương tự nút "Mới") ---
+        // Xóa bảng TTHD
+        modelTTHD.setRowCount(0);
+
+        // Reset số lượng sản phẩm về 0
+        JLabel[] lblSLs = {
+            lblSLSP1, lblSLSP2, lblSLSP3,
+            lblSLSP4, lblSLSP5, lblSLSP6
+        };
+        for (JLabel lbl : lblSLs) {
+            lbl.setText("0");
+        }
+
+        // Reset các ô tổng tiền
+        jTextField1.setText("0"); // tổng tiền sp
+        jTextField2.setText("0"); // giảm giá
+        jTextField3.setText("0"); // tổng thanh toán
+        jTextField4.setText("");  // tiền mặt
+        jTextField5.setText("0"); // trả lại
+
+        // Cập nhật ngày giờ mới
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
+        String thoiGianMoi = LocalDateTime.now().format(formatter);
+        lblNgayGio.setText(thoiGianMoi);
+
+        // Gán mã hóa đơn mới
+        lblMaHoaDon.setText("HD" + soHoaDon);
     }//GEN-LAST:event_btnChoActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         int row = tblTTHD.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
+
+        String[] danhSachSP = {
+            "Trà sữa", "Trà DCS", "Cà phê", "Cà Phê Sữa", "Nước ép dưa hấu", "Nước ép cam"
+        };
+        JLabel[] lblSLs = {
+            lblSLSP1, lblSLSP2, lblSLSP3,
+            lblSLSP4, lblSLSP5, lblSLSP6
+        };
+
         if (row >= 0) {
+            // lấy tên sản phẩm từ dòng được chọn
+            String tenSP = model.getValueAt(row, 0).toString();
+
+            // tìm và reset số lượng tương ứng
+            for (int i = 0; i < danhSachSP.length; i++) {
+                if (danhSachSP[i].equals(tenSP)) {
+                    lblSLs[i].setText("0");
+                    break;
+                }
+            }
+
+            // xóa dòng được chọn
             model.removeRow(row);
         } else {
+            // không chọn dòng → xóa toàn bộ hóa đơn
             model.setRowCount(0);
+
+            // reset toàn bộ số lượng
+            for (JLabel lbl : lblSLs) {
+                jTextField4.setText("");
+                lbl.setText("0");
+            }
         }
+
         tinhTongTien();
     }//GEN-LAST:event_btnXoaActionPerformed
 
