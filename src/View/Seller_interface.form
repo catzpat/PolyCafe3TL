@@ -238,7 +238,7 @@
                                   <Component id="pnlSP5" min="-2" max="-2" attributes="0"/>
                                   <Component id="pnlSP6" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="417" max="32767" attributes="0"/>
+                              <EmptySpace pref="423" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1151,7 +1151,7 @@
         <Container class="javax.swing.JPanel" name="pnlTTHD">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1206,7 +1206,7 @@
                                   <Component id="jScrollPane3" alignment="0" pref="438" max="32767" attributes="0"/>
                                   <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel15" min="-2" pref="232" max="-2" attributes="0"/>
+                                      <Component id="txtMaNV" min="-2" pref="190" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="lblMaHoaDon" min="-2" pref="171" max="-2" attributes="0"/>
                                   </Group>
@@ -1227,7 +1227,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMaHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel15" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="txtMaNV" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="266" max="-2" attributes="0"/>
@@ -1285,12 +1285,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="[M&#xe3; H&#xf3;a &#x110;&#x1a1;n]"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel15">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="                           NV: [Ma_NV]"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -1411,6 +1405,12 @@
             <Component class="javax.swing.JLabel" name="jLabel23">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n tr&#x1ea3; l&#x1ea1;i:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtMaNV">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="NVBH"/>
               </Properties>
             </Component>
           </SubComponents>

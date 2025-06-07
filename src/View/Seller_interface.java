@@ -34,7 +34,8 @@ public class Seller_interface extends javax.swing.JFrame {
         setTitle("4KL_Seller");
         setExtendedState(JFrame.MAXIMIZED_BOTH); // set width = max
         setLocationRelativeTo(null);
-        txtUserName.setText("Xin Chao, " + NameAccount);
+        txtUserName.setText("Xin chao, " + NameAccount);
+        txtMaNV.setText("NVBH: " + NameAccount);
 //        ---------------------------------------------------------------------
         DAO dao = new DAO();
 
@@ -346,7 +347,6 @@ public class Seller_interface extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblNgayGio = new javax.swing.JLabel();
         lblMaHoaDon = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblTTHD = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -361,6 +361,7 @@ public class Seller_interface extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        txtMaNV = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -913,7 +914,7 @@ public class Seller_interface extends javax.swing.JFrame {
                 .addGroup(pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlSP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlSP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(pnlSP);
@@ -1049,7 +1050,7 @@ public class Seller_interface extends javax.swing.JFrame {
 
         pnlMain.add(pnlHDC, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 450, -1));
 
-        pnlTTHD.setBackground(new java.awt.Color(255, 255, 204));
+        pnlTTHD.setBackground(new java.awt.Color(255, 255, 153));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1060,9 +1061,6 @@ public class Seller_interface extends javax.swing.JFrame {
 
         lblMaHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblMaHoaDon.setText("[Mã Hóa Đơn]");
-
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("                           NV: [Ma_NV]");
 
         tblTTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1108,6 +1106,9 @@ public class Seller_interface extends javax.swing.JFrame {
 
         jLabel23.setText("Tiền trả lại:");
 
+        txtMaNV.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtMaNV.setText("NVBH");
+
         javax.swing.GroupLayout pnlTTHDLayout = new javax.swing.GroupLayout(pnlTTHD);
         pnlTTHD.setLayout(pnlTTHDLayout);
         pnlTTHDLayout.setHorizontalGroup(
@@ -1147,7 +1148,7 @@ public class Seller_interface extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlTTHDLayout.createSequentialGroup()
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
@@ -1162,7 +1163,7 @@ public class Seller_interface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTTHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMaHoaDon)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaNV))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1426,7 +1427,6 @@ public class Seller_interface extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -1490,6 +1490,7 @@ public class Seller_interface extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTTHD;
     private javax.swing.JTable tblHDC;
     private javax.swing.JTable tblTTHD;
+    private javax.swing.JLabel txtMaNV;
     private javax.swing.JLabel txtUserName;
     // End of variables declaration//GEN-END:variables
 }
