@@ -100,13 +100,13 @@ public class TAB_Order extends javax.swing.JFrame {
 
     /* ======= CARD SẢN PHẨM (ảnh + tên + giá + +/-) ======= */
     private JPanel taoCardSanPham(Products sp) {
-        // Card tổng
+        // === Card tổng ===
         JPanel card = new JPanel(new BorderLayout(10, 10));
         card.setPreferredSize(new Dimension(280, 130));
         card.setBackground(new Color(240, 240, 240));
         card.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 
-        // === Ảnh sản phẩm ===
+        // Ảnh sản phẩm
         JLabel lblImg = new JLabel();
         lblImg.setHorizontalAlignment(SwingConstants.CENTER);
         lblImg.setVerticalAlignment(SwingConstants.CENTER);
@@ -128,7 +128,7 @@ public class TAB_Order extends javax.swing.JFrame {
         imgPanel.add(lblImg, BorderLayout.CENTER);
         card.add(imgPanel, BorderLayout.WEST);
 
-        // === Thông tin sản phẩm ===
+        // Thông tin sản phẩm
         JLabel lblTen = new JLabel(sp.getTenSP());
         lblTen.setFont(new Font("Segoe UI", Font.BOLD, 13));
         lblTen.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -224,7 +224,6 @@ public class TAB_Order extends javax.swing.JFrame {
         danhSachTam.remove(row);
     }
 
-    
     /* ======================================== */
     private void capNhatBangTTHD(String tenSP, int donGia, int soLuongMoi) {
         DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
@@ -842,11 +841,11 @@ public class TAB_Order extends javax.swing.JFrame {
         // 4. Ghi DB
         DAO dao = new DAO();
         boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP,
-                giamGia, thanhToan, tienMat, tienTraLai);   
+                giamGia, thanhToan, tienMat, tienTraLai);
         boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
 
         if (okHD && okCT) {
-            JOptionPane.showMessageDialog(this, "Thanh toán & lưu DB thành công!");
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
             btnMoi.doClick();                // Reset giao diện
             resetSoLuongTatCaSanPham();
 
@@ -856,6 +855,12 @@ public class TAB_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_btnthanhToanActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+// Nếu bảng tblTTHD và bảng HĐ chờ đều đang rỗng thì không cho xóa
+        if (tblTTHD.getRowCount() == 0 && tblHDC.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Không có hóa đơn nào để xóa!");
+            return;
+        }
+
         // Xóa bảng tblTTHD
         DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
         model.setRowCount(0);
@@ -868,10 +873,12 @@ public class TAB_Order extends javax.swing.JFrame {
         jTextField2.setText("0"); // Giảm giá
         jTextField3.setText("0"); // Thanh toán
         jTextField4.setText("");  // Tiền khách đưa
-        jTextField5.setText("0");  // Tiền trả lại
+        jTextField5.setText("0"); // Tiền trả lại
 
-        // Reset số lượng sản phẩm đã chọn
-        // Reset lại mã hóa đơn mới và ngày giờ
+        // Reset mã hóa đơn và thời gian
+        if (soHoaDon > 999) {
+            soHoaDon = 1;
+        }
         lblMaHoaDon.setText("HD" + soHoaDon++);
         lblNgayGio.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -909,33 +916,24 @@ public class TAB_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChoActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        if (tblTTHD.getRowCount() == 0 && tblHDC.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Không có hóa đơn nào để làm mới!");
+            return;
+        }
+
         // Reset các ô tổng tiền
-        jTextField1.setText("0"); // Tổng tiền SP
-        jTextField2.setText("0"); // Giảm giá
-        jTextField3.setText("0"); // Thanh toán
-        jTextField4.setText("");  // Tiền khách đưa
-        jTextField5.setText("0"); // Tiền trả lại
+        jTextField1.setText("0");
+        jTextField2.setText("0");
+        jTextField3.setText("0");
+        jTextField4.setText("");
+        jTextField5.setText("0");
 
         // Reset bảng sản phẩm đã chọn
         DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
         model.setRowCount(0);
 
-        // Reset số lượng tất cả sản phẩm trên giao diện về 0
-        for (Component comp : pnlSP.getComponents()) {
-            if (comp instanceof JPanel panel) {
-                for (Component inner : panel.getComponents()) {
-                    if (inner instanceof JPanel infoPanel) {
-                        for (Component lbl : infoPanel.getComponents()) {
-                            if (lbl instanceof JLabel label) {
-                                if (label.getName() != null && label.getName().equals("lblSoLuong")) {
-                                    label.setText("0");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        // Reset số lượng sản phẩm
+        resetSoLuongTatCaSanPham();
 
         // Cập nhật ngày giờ
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
@@ -943,9 +941,7 @@ public class TAB_Order extends javax.swing.JFrame {
         lblNgayGio.setText(thoiGian);
 
         // Tạo mã hóa đơn mới
-        resetSoLuongTatCaSanPham();
-        String maHD = "HD" + soHoaDon++;
-        lblMaHoaDon.setText(maHD);
+        lblMaHoaDon.setText("HD" + soHoaDon++);
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void cbxLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiSPActionPerformed
@@ -964,8 +960,8 @@ public class TAB_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxLoaiSPActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
