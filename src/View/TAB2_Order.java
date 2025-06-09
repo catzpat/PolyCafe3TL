@@ -40,10 +40,14 @@ public class TAB2_Order extends javax.swing.JFrame {
         btnMoi.doClick();        // Reset hóa đơn
         setTitle("4KL_Seller");
         setLocationRelativeTo(null);
-
-        txtUserName.setText("Xin chào, " + NameAccount);
+        ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        txtImg.setText("");
+        txtImg.setIcon(new ImageIcon(scaledImg));
+        txtUserName.setText(NameAccount);
         txtMaNV.setText("NVBH: " + NameAccount);
-        
+
         /* Xoá dòng trống mặc định trong 2 bảng */
         ((DefaultTableModel) tblTTHD.getModel()).setRowCount(0);
         ((DefaultTableModel) tblHDC.getModel()).setRowCount(0);
@@ -331,6 +335,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         btnQLHD = new javax.swing.JButton();
         btnTK = new javax.swing.JButton();
         btnQLHD1 = new javax.swing.JButton();
+        txtImg = new javax.swing.JLabel();
         pnlHD = new javax.swing.JPanel();
         pnlHDC = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -391,6 +396,9 @@ public class TAB2_Order extends javax.swing.JFrame {
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
 
+        txtImg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtImg.setText("img");
+
         javax.swing.GroupLayout pnlCNLayout = new javax.swing.GroupLayout(pnlCN);
         pnlCN.setLayout(pnlCNLayout);
         pnlCNLayout.setHorizontalGroup(
@@ -403,18 +411,23 @@ public class TAB2_Order extends javax.swing.JFrame {
                     .addComponent(btnQLSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCNLayout.createSequentialGroup()
-                        .addGap(0, 36, Short.MAX_VALUE)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
         pnlCNLayout.setVerticalGroup(
             pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCNLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtUserName)
-                .addGap(61, 61, 61)
+                .addGap(28, 28, 28)
+                .addGroup(pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserName))
+                .addGap(31, 31, 31)
                 .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -733,13 +746,14 @@ public class TAB2_Order extends javax.swing.JFrame {
                     .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlDSSPLayout.createSequentialGroup()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDSSPLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(cbxLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
+            .addGroup(pnlDSSPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
         pnlDSSPLayout.setVerticalGroup(
             pnlDSSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,7 +764,7 @@ public class TAB2_Order extends javax.swing.JFrame {
                 .addComponent(cbxLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1040,6 +1054,7 @@ public class TAB2_Order extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTTHD;
     private javax.swing.JTable tblHDC;
     private javax.swing.JTable tblTTHD;
+    private javax.swing.JLabel txtImg;
     private javax.swing.JLabel txtMaNV;
     private javax.swing.JLabel txtUserName;
     // End of variables declaration//GEN-END:variables
