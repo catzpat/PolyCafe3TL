@@ -49,7 +49,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="AI C&#xd3; &#x1ea2;NH G&#xcc; HAY HAY TH&#xcc; PUSH L&#xca;N"/>
+        <Property name="text" type="java.lang.String" value="WELCOME TO POLYCAFE APP"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JProgressBar" name="pgLoading">

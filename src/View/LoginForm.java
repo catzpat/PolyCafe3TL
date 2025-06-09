@@ -16,8 +16,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     public void initLayout() {
-        txtRegister.setText("<html><u>Register</u></html>");
-        txtForgot.setText("<html><u>Forgot password</u></html>");
+        txtForgot.setText("<html><u>Change password</u></html>");
         mainPanel.setBackground(new Color(20, 20, 20));
         cbShow.setBackground(new Color(20, 20, 20));
         btnLogin.setBackground(new Color(40, 40, 40));
@@ -25,6 +24,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtName.setBackground(white);
         btnLogin.setFocusPainted(false);
         cbShow.setFocusPainted(false);
+        btnLogin.setFocusPainted(false);
 //        ----------------------------------------------------------------------
         // Set hover cho btnLogin
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -36,18 +36,7 @@ public class LoginForm extends javax.swing.JFrame {
                 btnLogin.setBackground(new Color(40, 40, 40));
             }
         });
-//        ----------------------------------------------------------------------
-        // Set hover cho txtReg
-        txtRegister.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtRegister.setForeground(new Color(70, 130, 180));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtRegister.setForeground(Color.WHITE);
-            }
-        });
-
+//        ---------------------------------------------------------------------
         txtForgot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtForgot.setForeground(new Color(70, 130, 180));
@@ -69,7 +58,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        JLabel5 = new javax.swing.JLabel();
         txtRegister = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         txtForgot = new javax.swing.JLabel();
@@ -104,15 +92,9 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        JLabel5.setBackground(new java.awt.Color(51, 51, 255));
-        JLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        JLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        JLabel5.setText("Don't have an account?");
-
         txtRegister.setBackground(new java.awt.Color(51, 51, 255));
         txtRegister.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtRegister.setForeground(new java.awt.Color(255, 255, 255));
-        txtRegister.setText("Register");
         txtRegister.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtRegisterMouseClicked(evt);
@@ -130,7 +112,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtForgot.setBackground(new java.awt.Color(51, 51, 255));
         txtForgot.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtForgot.setForeground(new java.awt.Color(255, 255, 255));
-        txtForgot.setText("Forgot password");
+        txtForgot.setText("Change password");
         txtForgot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtForgotMouseClicked(evt);
@@ -166,15 +148,14 @@ public class LoginForm extends javax.swing.JFrame {
                                     .addComponent(cbShow)
                                     .addGap(18, 18, 18)
                                     .addComponent(txtForgot))
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(JLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                                        .addGap(148, 148, 148)
                                         .addComponent(txtRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))))))
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addGap(0, 81, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,10 +177,8 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabel5)
-                    .addComponent(txtRegister))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addComponent(txtRegister)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,19 +235,13 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked
-        RegisterForm reg = new RegisterForm();
-        reg.setVisible(true);
-        this.dispose(); // Xóa form cũ
-    }//GEN-LAST:event_txtRegisterMouseClicked
-
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
 
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtForgotMouseClicked
-        ForgotPasswordForm forgot = new ForgotPasswordForm();
-        forgot.setVisible(true);
+        ChangePW reg = new ChangePW();
+        reg.setVisible(true);
         this.dispose(); // Xóa form cũ
     }//GEN-LAST:event_txtForgotMouseClicked
 
@@ -280,6 +253,10 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbShowActionPerformed
 
+    private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked
+
+    }//GEN-LAST:event_txtRegisterMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -289,7 +266,6 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLabel5;
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox cbShow;
     private javax.swing.JLabel jLabel1;

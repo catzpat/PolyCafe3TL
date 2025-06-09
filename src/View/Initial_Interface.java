@@ -45,7 +45,7 @@ public class Initial_Interface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("AI CÓ ẢNH GÌ HAY HAY THÌ PUSH LÊN");
+        jLabel1.setText("WELCOME TO POLYCAFE APP");
 
         pgLoading.setForeground(new java.awt.Color(255, 153, 153));
 
