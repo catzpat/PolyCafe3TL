@@ -39,12 +39,11 @@ public class TAB2_Order extends javax.swing.JFrame {
         initUI();                // Load SP từ DB
         btnMoi.doClick();        // Reset hóa đơn
         setTitle("4KL_Seller");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
 
         txtUserName.setText("Xin chào, " + NameAccount);
         txtMaNV.setText("NVBH: " + NameAccount);
-
+        
         /* Xoá dòng trống mặc định trong 2 bảng */
         ((DefaultTableModel) tblTTHD.getModel()).setRowCount(0);
         ((DefaultTableModel) tblHDC.getModel()).setRowCount(0);

@@ -370,6 +370,11 @@ public class Seller_interface extends javax.swing.JFrame {
         txtUserName.setText("jLabel1");
 
         btnTrangChu.setText("Trang Chủ");
+        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangChuActionPerformed(evt);
+            }
+        });
 
         btnOrder.setText("Order");
 
@@ -1155,7 +1160,7 @@ public class Seller_interface extends javax.swing.JFrame {
         pnlTTHDLayout.setVerticalGroup(
             pnlTTHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTTHDLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNgayGio)
@@ -1390,6 +1395,10 @@ public class Seller_interface extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Đã in hóa đơn!");
         btnMoi.doClick(); // reset sau khi in
     }//GEN-LAST:event_btnInActionPerformed
+
+    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrangChuActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

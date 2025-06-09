@@ -7,13 +7,18 @@ public class Products {
     String LoaiSP;
     int Gia;
     String HinhAnh;
+    int TrangThai;
 
-    public Products(String MaSP, String TenSP, String LoaiSP, int Gia, String HinhAnh) {
+    public Products() {
+    }
+
+    public Products(String MaSP, String TenSP, String LoaiSP, int Gia, String HinhAnh, int TrangThai) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.LoaiSP = LoaiSP;
         this.Gia = Gia;
         this.HinhAnh = HinhAnh;
+        this.TrangThai = TrangThai;
     }
 
     public String getMaSP() {
@@ -56,9 +61,17 @@ public class Products {
         this.HinhAnh = HinhAnh;
     }
 
+    public int getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
     @Override
     public String toString() {
-        return "Products{" + "MaSP=" + MaSP + ", TenSP=" + TenSP + ", LoaiSP=" + LoaiSP + ", Gia=" + Gia + ", HinhAnh=" + HinhAnh + '}';
+        return "Products{" + "MaSP=" + MaSP + ", TenSP=" + TenSP + ", LoaiSP=" + LoaiSP + ", Gia=" + Gia + ", HinhAnh=" + HinhAnh + ", TrangThai=" + TrangThai + '}';
     }
 
 }

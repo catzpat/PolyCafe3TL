@@ -39,7 +39,8 @@ public class DAO {
                         rs.getNString("TenSP"),
                         rs.getNString("LoaiSP"),
                         rs.getInt("Gia"),
-                        rs.getString("HinhAnh")
+                        rs.getString("HinhAnh"),
+                        rs.getInt("TrangThaiBan")
                 );
                 list.add(p);
             }
@@ -109,49 +110,3 @@ public class DAO {
 
 }
 
-//    public User login(String NameAccount, String PasswordAccount) {
-//        try (Connection c = DBConnection.connect()) {
-//            String query = "SELECT * FROM V_Account WHERE NameAccount = ? AND PasswordAccount = ? AND AccountStatus = 0";
-//            PreparedStatement ps = c.prepareStatement(query);
-//            ps.setString(1, NameAccount);
-//            ps.setString(2, PasswordAccount);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                User u = new User();
-//                u.setNameAccount(rs.getString("NameAccount"));
-//                u.setPasswordAccount(rs.getString("PasswordAccount"));
-//                u.setRoleAccount(rs.getString("RoleAccount"));
-//                return u;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//        return null;
-//    }
-//
-//    public List<Products> getAllProducts() {
-//        List<Products> list = new ArrayList<>();
-//        String sql = "SELECT * FROM Products";
-//
-//        try (Connection conn = DBConnection.connect(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-//
-//            while (rs.next()) {
-//                Products p = new Products(
-//                        rs.getString("MaSP"),
-//                        rs.getNString("TenSP"),
-//                        rs.getNString("LoaiSP"),
-//                        rs.getInt("Gia"),
-//                        rs.getString("HinhAnh")
-//                );
-//                list.add(p);
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return list;
-//    }
-//
-//}
