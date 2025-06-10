@@ -10,7 +10,7 @@ public class DAO {
 
     public User login(String NameAccount, String PasswordAccount) {
         try (Connection c = DBConnection.connect()) {
-            String query = "SELECT * FROM V_Account WHERE NameAccount = ? AND PasswordAccount = ? AND AccountStatus = 0";
+            String query = "SELECT * FROM V_Account WHERE NameAccount = ? AND PasswordAccount = ? ";
             PreparedStatement ps = c.prepareStatement(query);
             ps.setString(1, NameAccount);
             ps.setString(2, PasswordAccount);
