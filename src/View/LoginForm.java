@@ -207,7 +207,7 @@ public class LoginForm extends javax.swing.JFrame {
         }
 
         if (PasswordAccount.isEmpty()) {
-            txtPW.setBackground(Color.red);
+            txtPW.setBackground(Color.red); 
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
