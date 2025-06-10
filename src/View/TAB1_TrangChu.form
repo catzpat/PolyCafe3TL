@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlMain" alignment="0" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlMain" alignment="0" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlMain">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d6" green="ff" red="df" type="rgb"/>
+        </Property>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1485, 780]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1485, 780]"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="pnlCN" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblTrangTri" max="32767" attributes="0"/>
+                              <Component id="lblTrangTri1" max="32767" attributes="0"/>
+                              <Component id="lblPMQL" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPolycafe" max="32767" attributes="0"/>
+                              <Component id="lblTG" max="32767" attributes="0"/>
+                              <Component id="lblTen" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblVT" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblBQ" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblDMK" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblDX" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="544" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="510" max="-2" attributes="0"/>
+                          <Component id="lblFPS" min="-2" pref="265" max="-2" attributes="0"/>
+                          <EmptySpace pref="514" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="pnlCN" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                  <Component id="lblFPS" min="-2" pref="65" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblTrangTri" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblTrangTri1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="lblPMQL" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblPolycafe" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblTG" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="lblTen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblVT" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDX" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDMK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblBQ" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="pnlCN">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c8" green="cc" red="d7" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnTrangChu" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnOrder" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnQLSP" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnQLHD" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTK" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnQLHD1" alignment="1" pref="184" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                      <Component id="btnTrangChu" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnOrder" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnQLSP" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnQLHD" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnQLHD1" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="btnTK" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace pref="320" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnTrangChu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnOrder">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Order"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnQLSP">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; S&#x1ea3;n Ph&#x1ea9;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnQLHD">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#xf3;a &#x110;&#x1a1;n"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnTK">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnQLHD1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xe2;n Vi&#xea;n"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="lblTrangTri">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="------------------------ &#x2726;&#x2726;&#x2726; ------------------------"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTrangTri1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value=" --------------- &#x2726;&#x2726; --------------- "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPMQL">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="24" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="PH&#x1ea6;N M&#x1ec0;M QU&#x1ea2;N L&#xdd;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPolycafe">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="24" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="POLYCAFE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTG">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[Th&#x1ee9;, ng&#xe0;y - gi&#x1edd;]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTen">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[Xin chao, NameAccount]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblVT">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[Nh&#xe2;n Vi&#xea;n/Admin]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDX">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[&#x110;&#x103;ng xu&#x1ea5;t]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDMK">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[&#x110;&#x1ed5;i m&#x1ead;t kh&#x1ea9;u]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBQ">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="[B&#x1ea3;n quy&#x1ec1;n (POLYCAFE_4KL)]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblFPS">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 50]"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
