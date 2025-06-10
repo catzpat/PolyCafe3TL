@@ -20,6 +20,7 @@ public class DAO {
                 u.setNameAccount(rs.getString("NameAccount"));
                 u.setPasswordAccount(rs.getString("PasswordAccount"));
                 u.setRoleAccount(rs.getString("RoleAccount"));
+                u.setAccountStatus(rs.getBoolean("AccountStatus"));
                 return u;
             }
         } catch (Exception e) {

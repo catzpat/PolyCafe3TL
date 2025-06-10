@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import Controller.AccountDAO;
@@ -10,53 +6,44 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ADMIN
- */
 public class TAB5_QLNV extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TAB5_QLNV
-     */
     public TAB5_QLNV() {
         initComponents();
         loadTable();
     }
 
     private void loadTable() {
-    try {
-        // 1. Lấy model của bảng
-        DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
-        model.setRowCount(0); // Xoá dữ liệu cũ
+        try {
+            // 1. Lấy model của bảng
+            DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
+            model.setRowCount(0); // Xoá dữ liệu cũ
 
-        // 2. Gọi DAO lấy danh sách tài khoản
-        AccountDAO dao = new AccountDAO();
-        List<Account> list = dao.selectAll();
+            // 2. Gọi DAO lấy danh sách tài khoản
+            AccountDAO dao = new AccountDAO();
+            List<Account> list = dao.selectAll();
 
-        // 3. Duyệt danh sách và thêm từng dòng vào bảng
-        for (Account acc : list) {
-            Object[] row = {
-                acc.getIdAccount(),
-                acc.getNameAccount(),
-                acc.getEmail(),
-                acc.getUserName(),
-                acc.getSex(),
-                acc.getRoleAccount(),
-                acc.getAccountStatus() == 1 ? "Hoạt động" : "Ngưng",
-                acc.getCreatedAt()
-            };
-            model.addRow(row);
+            // 3. Duyệt danh sách và thêm từng dòng vào bảng
+            for (Account acc : list) {
+                Object[] row = {
+                    acc.getIdAccount(),
+                    acc.getNameAccount(),
+                    acc.getEmail(),
+                    acc.getUserName(),
+                    acc.getSex(),
+                    acc.getRoleAccount(),
+                    acc.getAccountStatus() == 1 ? "Hoạt động" : "Ngưng",
+                    acc.getCreatedAt()
+                };
+                model.addRow(row);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi load bảng tài khoản: " + e.getMessage());
+            e.printStackTrace();
         }
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Lỗi khi load bảng tài khoản: " + e.getMessage());
-        e.printStackTrace();
     }
-}
 
-    
-           
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -197,7 +184,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(radHoatDong);
-        radHoatDong.setText("Ngừng Hoạt Động");
+        radHoatDong.setText(" Hoạt Động");
         radHoatDong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radHoatDongActionPerformed(evt);
@@ -205,7 +192,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(radNgung);
-        radNgung.setText("Đang Hoạt Động");
+        radNgung.setText("Ngừng Hoạt Động");
         radNgung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radNgungActionPerformed(evt);
@@ -406,45 +393,45 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_radNgungActionPerformed
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-  try {
-        // 1. Lấy dữ liệu từ form
-        String nameAccount = txtUsernameNV.getText().trim();
-        String password = txtPasswordNV.getText().trim();
-        String email = txtEmailNV.getText().trim();
-        String userName = txtUserName.getText().trim();
-        String sex = txtGioiTinhNV.getText().trim(); // TextField
-        String role = cbRole.getSelectedItem().toString(); // JComboBox (Admin/User)
-        int status = radHoatDong.isSelected() ? 1 : 0; // JRadioButton
+        try {
+            // 1. Lấy dữ liệu từ form
+            String nameAccount = txtUsernameNV.getText().trim();
+            String password = txtPasswordNV.getText().trim();
+            String email = txtEmailNV.getText().trim();
+            String userName = txtUserName.getText().trim();
+            String sex = txtGioiTinhNV.getText().trim(); // TextField
+            String role = cbRole.getSelectedItem().toString(); // JComboBox (Admin/User)
+            int status = radHoatDong.isSelected() ? 1 : 0; // JRadioButton
 
-        // 2. Kiểm tra dữ liệu
-        if (nameAccount.isEmpty() || password.isEmpty() || email.isEmpty() || userName.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin bắt buộc!");
-            return;
+            // 2. Kiểm tra dữ liệu
+            if (nameAccount.isEmpty() || password.isEmpty() || email.isEmpty() || userName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin bắt buộc!");
+                return;
+            }
+
+            // 3. Tạo đối tượng Account
+            Account acc = new Account();
+            acc.setNameAccount(nameAccount);
+            acc.setPasswordAccount(password);
+            acc.setEmail(email);
+            acc.setUserName(userName);
+            acc.setSex(sex);
+            acc.setRoleAccount(role);
+            acc.setAccountStatus(status);
+            acc.setCreatedAt(null); // Created_at sẽ tự sinh tại DB
+
+            // 4. Gọi DAO để thêm vào DB
+            AccountDAO dao = new AccountDAO();
+            dao.insert(acc);
+
+            // 5. Thông báo và cập nhật bảng
+            JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!");
+            loadTable(); // nếu có
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi thêm tài khoản: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        // 3. Tạo đối tượng Account
-        Account acc = new Account();
-        acc.setNameAccount(nameAccount);
-        acc.setPasswordAccount(password);
-        acc.setEmail(email);
-        acc.setUserName(userName);
-        acc.setSex(sex);
-        acc.setRoleAccount(role);
-        acc.setAccountStatus(status);
-        acc.setCreatedAt(null); // Created_at sẽ tự sinh tại DB
-
-        // 4. Gọi DAO để thêm vào DB
-        AccountDAO dao = new AccountDAO();
-        dao.insert(acc);
-
-        // 5. Thông báo và cập nhật bảng
-        JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!");
-        loadTable(); // nếu có
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Lỗi khi thêm tài khoản: " + e.getMessage());
-        e.printStackTrace();
-    } 
     }//GEN-LAST:event_btAddActionPerformed
 
     private void txtGioiTinhNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGioiTinhNVActionPerformed
@@ -462,68 +449,68 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
         txtPasswordNV.setText("");
         txtUserName.setText("");
-    int row = tblNhanVien.getSelectedRow();
-    if (row >= 0) {
-        // Lấy dữ liệu từ bảng
-        int id = (int) tblNhanVien.getValueAt(row, 0);
-        String nameAccount = tblNhanVien.getValueAt(row, 1).toString();
-        String email = tblNhanVien.getValueAt(row, 2).toString();
-        String userName = tblNhanVien.getValueAt(row, 3).toString();
-        String sex = tblNhanVien.getValueAt(row, 4).toString();
-        String role = tblNhanVien.getValueAt(row, 5).toString();
-        String statusText = tblNhanVien.getValueAt(row, 6).toString();
+        int row = tblNhanVien.getSelectedRow();
+        if (row >= 0) {
+            // Lấy dữ liệu từ bảng
+            int id = (int) tblNhanVien.getValueAt(row, 0);
+            String nameAccount = tblNhanVien.getValueAt(row, 1).toString();
+            String email = tblNhanVien.getValueAt(row, 2).toString();
+            String userName = tblNhanVien.getValueAt(row, 3).toString();
+            String sex = tblNhanVien.getValueAt(row, 4).toString();
+            String role = tblNhanVien.getValueAt(row, 5).toString();
+            String statusText = tblNhanVien.getValueAt(row, 6).toString();
 
-        // Điền vào form
-        txtNVID.setText(String.valueOf(id)); // nếu bạn có ô ẩn để lưu ID
-        txtTenNV.setText(nameAccount);
-        txtEmailNV.setText(email);
-        txtUserName.setText(userName);
-        txtGioiTinhNV.setText(sex);
-        cbRole.setSelectedItem(role);
-        if (statusText.equals("Hoạt động")) {
-            radHoatDong.setSelected(true);
-        } else {
-            radNgung.setSelected(true);
+            // Điền vào form
+            txtNVID.setText(String.valueOf(id)); // nếu bạn có ô ẩn để lưu ID
+            txtTenNV.setText(nameAccount);
+            txtEmailNV.setText(email);
+            txtUserName.setText(userName);
+            txtGioiTinhNV.setText(sex);
+            cbRole.setSelectedItem(role);
+            if (statusText.equals("Hoạt động")) {
+                radHoatDong.setSelected(true);
+            } else {
+                radNgung.setSelected(true);
+            }
         }
-    }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
-     try {
-        int id = Integer.parseInt(txtNVID.getText().trim()); // hidden hoặc readonly
-        String nameAccount = txtTenNV.getText().trim();
-        String password = txtPasswordNV.getText().trim();
-        String email = txtEmailNV.getText().trim();
-        String userName = txtUserName.getText().trim();
-        String sex = txtGioiTinhNV.getText().trim();
-        String role = cbRole.getSelectedItem().toString();
-         System.out.println(role);
-        int status = radHoatDong.isSelected() ? 1 : 0;
+        try {
+            int id = Integer.parseInt(txtNVID.getText().trim()); // hidden hoặc readonly
+            String nameAccount = txtTenNV.getText().trim();
+            String password = txtPasswordNV.getText().trim();
+            String email = txtEmailNV.getText().trim();
+            String userName = txtUserName.getText().trim();
+            String sex = txtGioiTinhNV.getText().trim();
+            String role = cbRole.getSelectedItem().toString();
+            System.out.println(role);
+            int status = radHoatDong.isSelected() ? 1 : 0;
 
-        if (nameAccount.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Tên đăng nhập và mật khẩu không được để trống!");
-            return;
+            if (nameAccount.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Tên đăng nhập và mật khẩu không được để trống!");
+                return;
+            }
+
+            Account acc = new Account();
+            acc.setIdAccount(id);
+            acc.setNameAccount(nameAccount);
+            acc.setPasswordAccount(password);
+            acc.setEmail(email);
+            acc.setUserName(userName);
+            acc.setSex(sex);
+            acc.setRoleAccount(role);
+            acc.setAccountStatus(status);
+
+            AccountDAO dao = new AccountDAO();
+            dao.update(acc);
+
+            JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+            loadTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi cập nhật: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        Account acc = new Account();
-        acc.setIdAccount(id);
-        acc.setNameAccount(nameAccount);
-        acc.setPasswordAccount(password);
-        acc.setEmail(email);
-        acc.setUserName(userName);
-        acc.setSex(sex);
-        acc.setRoleAccount(role);
-        acc.setAccountStatus(status);
-
-        AccountDAO dao = new AccountDAO();
-        dao.update(acc);
-
-        JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
-        loadTable();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Lỗi cập nhật: " + e.getMessage());
-        e.printStackTrace();
-    }
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed

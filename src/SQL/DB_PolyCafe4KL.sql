@@ -168,4 +168,4 @@ INSERT INTO Products VALUES
 ('ST04', N'Sinh tố mãng cầu', N'Sinh tố', 30000, 'ST_MangCau.jpg', 0);
 GO
 
-SELECT * FROM Products
+SELECT * FROM Account
