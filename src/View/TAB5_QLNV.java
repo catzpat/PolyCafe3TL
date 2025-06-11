@@ -3,16 +3,35 @@ package View;
 import Controller.AccountDAO;
 import Model.Account;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TAB5_QLNV extends javax.swing.JFrame {
 
-    public TAB5_QLNV() {
+    private String NameAccount = "";
+    private String RoleAccount;
+
+    public TAB5_QLNV(String NameAccount, String RoleAccount) {
+        this.NameAccount = NameAccount;
+        this.RoleAccount = RoleAccount;
         initComponents();
+        initUI();
         loadTable();
+    }
+
+    public void initUI() {
+        setTitle("4KL_Quản Lý Nhân Viên");
+        setLocationRelativeTo(null);
+        ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        txtImg.setText("");
+        txtImg.setIcon(new ImageIcon(scaledImg));
+        txtUserName.setText(NameAccount);
         JButton[] btn = {
             btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK, btnThem, btnTim, btnSua
         };
@@ -72,13 +91,14 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         pnlMain = new javax.swing.JPanel();
         pnlCN = new javax.swing.JPanel();
-        txtUserName = new javax.swing.JLabel();
         btnTrangChu = new javax.swing.JButton();
         btnOrder = new javax.swing.JButton();
         btnQLSP = new javax.swing.JButton();
         btnQLHD = new javax.swing.JButton();
         btnTK = new javax.swing.JButton();
         btnQLHD1 = new javax.swing.JButton();
+        txtUserName = new javax.swing.JLabel();
+        txtImg = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
@@ -113,9 +133,6 @@ public class TAB5_QLNV extends javax.swing.JFrame {
 
         pnlCN.setBackground(new java.awt.Color(215, 204, 200));
 
-        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtUserName.setText("jLabel1");
-
         btnTrangChu.setText("Trang Chủ");
 
         btnOrder.setText("Order");
@@ -133,6 +150,12 @@ public class TAB5_QLNV extends javax.swing.JFrame {
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
 
+        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtUserName.setText("jLabel1");
+
+        txtImg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtImg.setText("img");
+
         javax.swing.GroupLayout pnlCNLayout = new javax.swing.GroupLayout(pnlCN);
         pnlCN.setLayout(pnlCNLayout);
         pnlCNLayout.setHorizontalGroup(
@@ -145,18 +168,23 @@ public class TAB5_QLNV extends javax.swing.JFrame {
                     .addComponent(btnQLSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCNLayout.createSequentialGroup()
-                        .addGap(0, 36, Short.MAX_VALUE)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCNLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         pnlCNLayout.setVerticalGroup(
             pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCNLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtUserName)
-                .addGap(61, 61, 61)
+                .addGap(28, 28, 28)
+                .addGroup(pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserName))
+                .addGap(31, 31, 31)
                 .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +196,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
                 .addComponent(btnQLHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -567,7 +595,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB5_QLNV().setVisible(true);
+                new TAB5_QLNV("", "").setVisible(true);
             }
         });
     }
@@ -604,6 +632,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmailNV;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtGioiTinhNV;
+    private javax.swing.JLabel txtImg;
     private javax.swing.JTextField txtNVID;
     private javax.swing.JTextField txtPasswordNV;
     private javax.swing.JTextField txtTenNV;

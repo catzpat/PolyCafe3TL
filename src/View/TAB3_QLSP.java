@@ -16,9 +16,26 @@ import java.util.List;
 
 public class TAB3_QLSP extends javax.swing.JFrame {
 
-    public TAB3_QLSP() {
+    private String NameAccount;
+    private String RoleAccount;
+
+    public TAB3_QLSP(String NameAccount, String RoleAccount) {
+        this.NameAccount = NameAccount;
+        this.RoleAccount = RoleAccount;
         initComponents();
         initUI();
+    }
+
+    public void initUI() {
+        DAO dao = new DAO();
+        setTitle("4kl_Quản Lý Sản Phẩm");
+        setLocationRelativeTo(null);
+        ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        txtImg.setText("");
+        txtImg.setIcon(new ImageIcon(scaledImg));
+        txtUserName.setText(NameAccount);
         JButton[] btn = {
             btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK, btnTimSP, btnThem, btnSua, btnAn
         };
@@ -37,19 +54,6 @@ public class TAB3_QLSP extends javax.swing.JFrame {
             });
 
         }
-
-    }
-
-    public void initUI() {
-        DAO dao = new DAO();
-        setLocationRelativeTo(null);
-        JButton[] btn = {
-            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK
-        };
-
-        for (JButton jbtn : btn) {
-            jbtn.setFocusPainted(false);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -58,13 +62,14 @@ public class TAB3_QLSP extends javax.swing.JFrame {
 
         pnlMain = new javax.swing.JPanel();
         pnlCN = new javax.swing.JPanel();
-        txtUserName = new javax.swing.JLabel();
         btnTrangChu = new javax.swing.JButton();
         btnOrder = new javax.swing.JButton();
         btnQLSP = new javax.swing.JButton();
         btnQLHD = new javax.swing.JButton();
         btnTK = new javax.swing.JButton();
         btnQLHD1 = new javax.swing.JButton();
+        txtUserName = new javax.swing.JLabel();
+        txtImg = new javax.swing.JLabel();
         pnlSP = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtTimSP = new javax.swing.JTextField();
@@ -84,9 +89,6 @@ public class TAB3_QLSP extends javax.swing.JFrame {
 
         pnlCN.setBackground(new java.awt.Color(215, 204, 200));
 
-        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtUserName.setText("jLabel1");
-
         btnTrangChu.setText("Trang Chủ");
 
         btnOrder.setText("Order");
@@ -98,6 +100,12 @@ public class TAB3_QLSP extends javax.swing.JFrame {
         btnTK.setText("Thống Kê");
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
+
+        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtUserName.setText("jLabel1");
+
+        txtImg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtImg.setText("img");
 
         javax.swing.GroupLayout pnlCNLayout = new javax.swing.GroupLayout(pnlCN);
         pnlCN.setLayout(pnlCNLayout);
@@ -111,18 +119,23 @@ public class TAB3_QLSP extends javax.swing.JFrame {
                     .addComponent(btnQLSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCNLayout.createSequentialGroup()
-                        .addGap(0, 36, Short.MAX_VALUE)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCNLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         pnlCNLayout.setVerticalGroup(
             pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCNLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtUserName)
-                .addGap(61, 61, 61)
+                .addGap(30, 30, 30)
+                .addGroup(pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtImg, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserName))
+                .addGap(29, 29, 29)
                 .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +147,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
                 .addComponent(btnQLHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         pnlSP.setBackground(new java.awt.Color(223, 255, 214));
@@ -285,7 +298,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB3_QLSP().setVisible(true);
+                new TAB3_QLSP("", "").setVisible(true);
             }
         });
     }
@@ -308,6 +321,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlSP;
     private javax.swing.JTable tblSanPham;
+    private javax.swing.JLabel txtImg;
     private javax.swing.JTextField txtTimSP;
     private javax.swing.JLabel txtUserName;
     // End of variables declaration//GEN-END:variables

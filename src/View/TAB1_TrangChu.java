@@ -12,12 +12,12 @@ import javax.swing.*;
 
 public class TAB1_TrangChu extends javax.swing.JFrame {
 
-    private String nameAccount;
-    private String roleAccount;
+    private String NameAccount;
+    private String RoleAccount;
 
-    public TAB1_TrangChu(String nameAccount, String roleAccount) {
-        this.nameAccount = nameAccount;
-        this.roleAccount = roleAccount;
+    public TAB1_TrangChu(String NameAccount, String RoleAccount) {
+        this.NameAccount = NameAccount;
+        this.RoleAccount = RoleAccount;
         initComponents();
         setLogo();
         setTime();
@@ -66,17 +66,12 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     }
 
     private void setAccountInfo() {
-        lblTen.setText("Xin chào, " + nameAccount);
-        lblVT.setText(roleAccount);
+        lblTen.setText("Xin chào, " + NameAccount);
+        lblVT.setText(RoleAccount);
         lblBQ.setText("© PolyCafe 4KL");
     }
 
     private void addLabelEvents() {
-        makeLabelInteractive(lblDMK, () -> {
-            // TODO: Mở giao diện đổi mật khẩu
-            System.out.println("Đổi mật khẩu được bấm");
-        });
-
         makeLabelInteractive(lblDX, () -> {
             // Đăng xuất: quay về LoginForm và đóng form hiện tại
             int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất?", "Đăng xuất", JOptionPane.YES_NO_OPTION);
@@ -119,7 +114,6 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         lblTen = new javax.swing.JLabel();
         lblVT = new javax.swing.JLabel();
         lblDX = new javax.swing.JLabel();
-        lblDMK = new javax.swing.JLabel();
         lblBQ = new javax.swing.JLabel();
         lblFPS = new javax.swing.JLabel();
 
@@ -146,12 +140,32 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
+        btnQLSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSPActionPerformed(evt);
+            }
+        });
 
         btnQLHD.setText("Quản Lý Hóa Đơn");
+        btnQLHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHDActionPerformed(evt);
+            }
+        });
 
         btnTK.setText("Thống Kê");
+        btnTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKActionPerformed(evt);
+            }
+        });
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
+        btnQLHD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHD1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCNLayout = new javax.swing.GroupLayout(pnlCN);
         pnlCN.setLayout(pnlCNLayout);
@@ -217,9 +231,6 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         lblDX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDX.setText("[Đăng xuất]");
 
-        lblDMK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDMK.setText("[Đổi mật khẩu]");
-
         lblBQ.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblBQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBQ.setText("[Bản quyền (POLYCAFE_4KL)]");
@@ -247,16 +258,14 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
                             .addComponent(lblVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblBQ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDMK, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDX, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(544, 544, 544))
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(505, 505, 505)
                         .addComponent(lblFPS, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(519, Short.MAX_VALUE))))
+                        .addContainerGap(519, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDX, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(589, 589, 589))))
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,9 +288,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblVT)
                 .addGap(18, 18, 18)
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDX)
-                    .addComponent(lblDMK))
+                .addComponent(lblDX)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblBQ)
                 .addContainerGap())
@@ -306,15 +313,35 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-
+        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
+        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLSPActionPerformed
+
+    private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
+        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHDActionPerformed
+
+    private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
+        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHD1ActionPerformed
+
+    private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
+        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTKActionPerformed
 
 //    public static void main(String args[]) {
 //        java.awt.EventQueue.invokeLater(() -> {
 //            new TAB1_TrangChu("Admin", "admin").setVisible(true);
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrder;
@@ -324,7 +351,6 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnTK;
     private javax.swing.JButton btnTrangChu;
     private javax.swing.JLabel lblBQ;
-    private javax.swing.JLabel lblDMK;
     private javax.swing.JLabel lblDX;
     private javax.swing.JLabel lblFPS;
     private javax.swing.JLabel lblPMQL;

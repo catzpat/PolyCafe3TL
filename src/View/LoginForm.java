@@ -223,13 +223,17 @@ public class LoginForm extends javax.swing.JFrame {
                     new TAB1_TrangChu(user_name, role).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Role không hợp lệ!");
+                    return;
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Tài khoản đã ngưng hoạt động!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Tên đăng nhập hoặc mật khẩu không đúng", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed

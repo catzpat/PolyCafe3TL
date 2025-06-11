@@ -19,26 +19,25 @@ import java.util.List;
 
 public class TAB2_Order extends javax.swing.JFrame {
 
-    /* ==================== FIELD ==================== */
-    private String NameAccount = "";
+    private String NameAccount;
+    private String roleAccount;
     private List<Object[]> danhSachTam = new ArrayList<>();
     private int soHoaDon = 1;
     private List<Products> danhSachSanPham = new ArrayList<>();
 
-
-    /* ==================== FORMAT TIỀN ==================== */
     private String formatTien(int soTien) {
         DecimalFormatSymbols s = new DecimalFormatSymbols();
         s.setGroupingSeparator(' ');
         return new DecimalFormat("#,###", s).format(soTien); // Định dạng tiền VD: "20 000"
     }
 
-    public TAB2_Order(String NameAccount) {
+    public TAB2_Order(String NameAccount, String roleAccount) {
         this.NameAccount = NameAccount;
+        this.roleAccount = roleAccount;
         initComponents();
         initUI();                // Load SP từ DB
         btnMoi.doClick();        // Reset hóa đơn
-        setTitle("4KL_Seller");
+        setTitle("4KL_Order");
         setLocationRelativeTo(null);
         ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
         Image img = icon.getImage();
@@ -983,7 +982,8 @@ public class TAB2_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxLoaiSPActionPerformed
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        // TODO add your handling code here:
+        new TAB1_TrangChu(NameAccount, roleAccount).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseClicked
@@ -994,36 +994,9 @@ public class TAB2_Order extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TAB2_Order.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TAB2_Order.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TAB2_Order.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TAB2_Order.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>D
-        //</editor-fold>
-        //</editor-fold>D
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB2_Order("").setVisible(true);
+                new TAB2_Order("", "").setVisible(true);
             }
         });
     }
