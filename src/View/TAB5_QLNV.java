@@ -522,7 +522,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
         txtPasswordNV.setText("");
-        txtUserName.setText("");
+        txtUsernameNV.setText("");
         int row = tblNhanVien.getSelectedRow();
         if (row >= 0) {
             // Lấy dữ liệu từ bảng
@@ -538,7 +538,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
             txtNVID.setText(String.valueOf(id)); // nếu bạn có ô ẩn để lưu ID
             txtTenNV.setText(nameAccount);
             txtEmailNV.setText(email);
-            txtUserName.setText(userName);
+            txtUsernameNV.setText(userName);
             txtGioiTinhNV.setText(sex);
             cbRole.setSelectedItem(role);
             if (statusText.equals("Hoạt động")) {
@@ -555,7 +555,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
             String nameAccount = txtTenNV.getText().trim();
             String password = txtPasswordNV.getText().trim();
             String email = txtEmailNV.getText().trim();
-            String userName = txtUserName.getText().trim();
+            String userName = txtUsernameNV.getText().trim();
             String sex = txtGioiTinhNV.getText().trim();
             String role = cbRole.getSelectedItem().toString();
             System.out.println(role);
