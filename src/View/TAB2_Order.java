@@ -52,12 +52,25 @@ public class TAB2_Order extends javax.swing.JFrame {
         ((DefaultTableModel) tblTTHD.getModel()).setRowCount(0);
         ((DefaultTableModel) tblHDC.getModel()).setRowCount(0);
 
-        /* Mặc định các ô tổng tiền = 0 */
+        // Set text mặc định
         jTextField1.setText("0");
         jTextField2.setText("0");
         jTextField3.setText("0");
         jTextField4.setText("");
         jTextField5.setText("0");
+
+        // Lọc sản phẩm Đang bán -> Hiển thị // Ngừng bán -> Không hiện
+        DAO dao = new DAO();
+        List<Products> all = dao.getAllProducts();
+        danhSachSanPham = new ArrayList<>();
+        for (Products p : all) {
+            if (p.getTrangThai() == 0) {
+                danhSachSanPham.add(p);
+            }
+        }
+
+        // Hiển thị danh sách sản phẩm ra giao diện
+        hienThiSanPham(danhSachSanPham);
     }
 
     /* ==================== LOAD SẢN PHẨM TỪ DB ==================== */
@@ -85,14 +98,14 @@ public class TAB2_Order extends javax.swing.JFrame {
         pnlSP.setLayout(new GridLayout(0, 2, 10, 10));
         hienThiSanPham(danhSachSanPham);
 
-        /* ==== xử lý click bảng HĐ chờ → load lại ==== */
+        // xử lý click bảng HĐ chờ -> load lại
         tblHDC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 xuLyLoadHoaDonCho();
             }
         });
 
-        /* ==== tự tính tiền trả lại khi nhập tiền mặt ==== */
+        // tự tính tiền trả lại khi nhập tiền mặt
         jTextField4.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 capNhatTienTraLai();

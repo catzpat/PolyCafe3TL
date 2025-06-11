@@ -96,7 +96,7 @@ public class ChangePW extends javax.swing.JFrame {
         });
 
         btnLogin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnLogin.setText("Login");
+        btnLogin.setText("Change");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
