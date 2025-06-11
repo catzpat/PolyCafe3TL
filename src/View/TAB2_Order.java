@@ -2,6 +2,7 @@ package View;
 
 import Controller.DAO;
 import Model.Products;
+import Model.User;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -1037,23 +1038,48 @@ public class TAB2_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
-        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        // Nếu chưa đăng nhập hoặc là User thì
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLSPActionPerformed
 
     private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
-        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLHDActionPerformed
 
     private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
-        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLHD1ActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnTKActionPerformed
 
     /**

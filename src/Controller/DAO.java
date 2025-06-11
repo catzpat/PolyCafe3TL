@@ -29,6 +29,29 @@ public class DAO {
         return null;
     }
 
+    public User getUserByNameAccount(String NameAccount) {
+        User user = null;
+        String sql = "SELECT * FROM V_Account WHERE NameAccount = ?";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, NameAccount);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                user = new User();
+                user.setIdAccount(rs.getInt("IDAccount"));
+                user.setNameAccount(rs.getString("NameAccount"));
+                user.setPasswordAccount(rs.getString("PasswordAccount"));
+                user.setEmail(rs.getString("Email"));
+                user.setUserName(rs.getString("UserName"));
+                user.setSex(rs.getString("Sex"));
+                user.setRoleAccount(rs.getString("RoleAccount"));
+                user.setAccountStatus(rs.getBoolean("AccountStatus"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public List<Products> getAllProducts() {
         List<Products> list = new ArrayList<>();
         String sql = "SELECT * FROM Products";
@@ -110,4 +133,3 @@ public class DAO {
     }
 
 }
-

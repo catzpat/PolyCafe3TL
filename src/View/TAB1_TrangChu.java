@@ -313,35 +313,65 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null) {
+            new TAB2_Order(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Hãy đăng nhập để sử dụng chức năng này!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
-        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLSPActionPerformed
 
     private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
-        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLHDActionPerformed
 
     private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
-        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnQLHD1ActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
-        this.dispose();
+        DAO dao = new DAO();
+        User user = dao.getUserByNameAccount(NameAccount);
+        if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
+            new TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnTKActionPerformed
 
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new TAB1_TrangChu("Null", "???").setVisible(true);
-//        });
-//    }
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> {
+            new TAB1_TrangChu("Null", "???").setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrder;
