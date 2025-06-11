@@ -57,9 +57,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         jTextField2.setText("0");
         jTextField3.setText("0");
         jTextField4.setText("");
-        jTextField5.setText("0");
-        
-        
+        jTextField5.setText("0"); 
     }
 
     /* ==================== LOAD SẢN PHẨM TỪ DB ==================== */

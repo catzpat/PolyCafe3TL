@@ -1,5 +1,7 @@
 package View;
 
+import Controller.DAO;
+import Model.User;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -13,7 +15,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     private String nameAccount;
     private String roleAccount;
 
-    public TAB1_TrangChu(String nameAccount) {
+    public TAB1_TrangChu(String nameAccount, String roleAccount) {
         this.nameAccount = nameAccount;
         this.roleAccount = roleAccount;
         initComponents();
@@ -130,8 +132,18 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         pnlCN.setBackground(new java.awt.Color(215, 204, 200));
 
         btnTrangChu.setText("Trang Chủ");
+        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangChuActionPerformed(evt);
+            }
+        });
 
         btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
 
@@ -289,11 +301,19 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new TAB1_TrangChu("admin").setVisible(true);
-        });
-    }
+    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrangChuActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new TAB1_TrangChu("Admin", "admin").setVisible(true);
+//        });
+//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

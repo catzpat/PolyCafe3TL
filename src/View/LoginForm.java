@@ -201,13 +201,13 @@ public class LoginForm extends javax.swing.JFrame {
         txtPW.setBackground(white);
 
         if (NameAccount.isEmpty()) {
-            txtName.setBackground(Color.red);
+            txtName.setBackground(Color.PINK);
             JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (PasswordAccount.isEmpty()) {
-            txtPW.setBackground(Color.red);
+            txtPW.setBackground(Color.PINK);
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -215,15 +215,12 @@ public class LoginForm extends javax.swing.JFrame {
         User user = dao.login(NameAccount, PasswordAccount);
         boolean checkStatus = user.isAccountStatus();
         if (user != null) {
-            if (checkStatus) { // AccountStatus == false (0 - còn hoạt động)
+            if (checkStatus) { // AccountStatus == false (1 - còn hoạt động)
+                String user_name = user.getNameAccount();
                 String role = user.getRoleAccount();
 
-                if ("User".equalsIgnoreCase(role)) {
-                    new TAB1_TrangChu(user.getNameAccount()).setVisible(true);
-                    this.dispose();
-                } else if ("Admin".equalsIgnoreCase(role)) {
-                    new TAB1_TrangChu(user.getNameAccount()).setVisible(true);
-                    this.dispose();
+                if ("User".equalsIgnoreCase(role) || "Admin".equalsIgnoreCase(role)) {
+                    new TAB1_TrangChu(user_name, role).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Role không hợp lệ!");
                 }
