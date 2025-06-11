@@ -339,7 +339,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
 
 //    public static void main(String args[]) {
 //        java.awt.EventQueue.invokeLater(() -> {
-//            new TAB1_TrangChu("Admin", "admin").setVisible(true);
+//            new TAB1_TrangChu("Null", "???").setVisible(true);
 //        });
 //    }
 

@@ -125,11 +125,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrangChuActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnOrder">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Order"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrderActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnQLSP">
               <Properties>
@@ -140,16 +146,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#xf3;a &#x110;&#x1a1;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLHDActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnQLHD1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xe2;n Vi&#xea;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLHD1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txtUserName">
               <Properties>

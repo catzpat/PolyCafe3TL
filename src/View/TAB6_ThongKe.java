@@ -87,16 +87,41 @@ public class TAB6_ThongKe extends javax.swing.JFrame {
         pnlCN.setBackground(new java.awt.Color(215, 204, 200));
 
         btnTrangChu.setText("Trang Chủ");
+        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangChuActionPerformed(evt);
+            }
+        });
 
         btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
+        btnQLSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSPActionPerformed(evt);
+            }
+        });
 
         btnQLHD.setText("Quản Lý Hóa Đơn");
+        btnQLHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHDActionPerformed(evt);
+            }
+        });
 
         btnTK.setText("Thống Kê");
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
+        btnQLHD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHD1ActionPerformed(evt);
+            }
+        });
 
         txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtUserName.setText("jLabel1");
@@ -382,6 +407,31 @@ public class TAB6_ThongKe extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTrangChuActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
+        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLSPActionPerformed
+
+    private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
+        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHDActionPerformed
+
+    private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
+        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHD1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

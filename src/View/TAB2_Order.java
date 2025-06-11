@@ -20,7 +20,7 @@ import java.util.List;
 public class TAB2_Order extends javax.swing.JFrame {
 
     private String NameAccount;
-    private String roleAccount;
+    private String RoleAccount;
     private List<Object[]> danhSachTam = new ArrayList<>();
     private int soHoaDon = 1;
     private List<Products> danhSachSanPham = new ArrayList<>();
@@ -31,9 +31,9 @@ public class TAB2_Order extends javax.swing.JFrame {
         return new DecimalFormat("#,###", s).format(soTien); // Định dạng tiền VD: "20 000"
     }
 
-    public TAB2_Order(String NameAccount, String roleAccount) {
+    public TAB2_Order(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
-        this.roleAccount = roleAccount;
+        this.RoleAccount = RoleAccount;
         initComponents();
         initUI();                // Load SP từ DB
         btnMoi.doClick();        // Reset hóa đơn
@@ -56,12 +56,29 @@ public class TAB2_Order extends javax.swing.JFrame {
         jTextField2.setText("0");
         jTextField3.setText("0");
         jTextField4.setText("");
-        jTextField5.setText("0"); 
+        jTextField5.setText("0");
     }
 
     /* ==================== LOAD SẢN PHẨM TỪ DB ==================== */
     private void initUI() {
         DAO dao = new DAO();
+        JButton[] btn = {
+            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK
+        };
+
+        for (JButton jbtn : btn) {
+            jbtn.setFocusPainted(false);
+            jbtn.setBackground(Color.WHITE);
+            jbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(new Color(230, 230, 250));
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(Color.WHITE);
+                }
+            });
+        }
         danhSachSanPham = dao.getAllProducts();
 
         pnlSP.setLayout(new GridLayout(0, 2, 10, 10));
@@ -396,14 +413,39 @@ public class TAB2_Order extends javax.swing.JFrame {
         });
 
         btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
+        btnQLSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSPActionPerformed(evt);
+            }
+        });
 
         btnQLHD.setText("Quản Lý Hóa Đơn");
+        btnQLHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHDActionPerformed(evt);
+            }
+        });
 
         btnTK.setText("Thống Kê");
+        btnTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKActionPerformed(evt);
+            }
+        });
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
+        btnQLHD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHD1ActionPerformed(evt);
+            }
+        });
 
         txtImg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtImg.setText("img");
@@ -982,13 +1024,37 @@ public class TAB2_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxLoaiSPActionPerformed
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        new TAB1_TrangChu(NameAccount, roleAccount).setVisible(true);
+        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTrangChuMouseClicked
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
+        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLSPActionPerformed
+
+    private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
+        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHDActionPerformed
+
+    private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
+        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHD1ActionPerformed
+
+    private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
+        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTKActionPerformed
 
     /**
      * @param args the command line arguments

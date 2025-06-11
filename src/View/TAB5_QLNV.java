@@ -134,8 +134,18 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         pnlCN.setBackground(new java.awt.Color(215, 204, 200));
 
         btnTrangChu.setText("Trang Chủ");
+        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangChuActionPerformed(evt);
+            }
+        });
 
         btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
         btnQLSP.addActionListener(new java.awt.event.ActionListener() {
@@ -145,10 +155,25 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         });
 
         btnQLHD.setText("Quản Lý Hóa Đơn");
+        btnQLHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHDActionPerformed(evt);
+            }
+        });
 
         btnTK.setText("Thống Kê");
+        btnTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKActionPerformed(evt);
+            }
+        });
 
         btnQLHD1.setText("Quản Lý Nhân Viên");
+        btnQLHD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHD1ActionPerformed(evt);
+            }
+        });
 
         txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtUserName.setText("jLabel1");
@@ -487,7 +512,8 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGioiTinhNVActionPerformed
 
     private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
-        // TODO add your handling code here:
+        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQLSPActionPerformed
 
     private void txtFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindActionPerformed
@@ -564,6 +590,30 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbRoleActionPerformed
+
+    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTrangChuActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
+        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQLHDActionPerformed
+
+    private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQLHD1ActionPerformed
+
+    private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
+        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTKActionPerformed
 
     /**
      * @param args the command line arguments
