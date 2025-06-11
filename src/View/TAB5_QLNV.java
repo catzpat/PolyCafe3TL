@@ -2,7 +2,9 @@ package View;
 
 import Controller.AccountDAO;
 import Model.Account;
+import java.awt.Color;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,6 +13,24 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     public TAB5_QLNV() {
         initComponents();
         loadTable();
+        JButton[] btn = {
+            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK, btnThem, btnTim, btnSua
+        };
+
+        for (JButton jbtn : btn) {
+            jbtn.setFocusPainted(false);
+            jbtn.setBackground(Color.WHITE);
+            jbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(new Color(230, 230, 250));
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(Color.WHITE);
+                }
+            });
+
+        }
     }
 
     private void loadTable() {
@@ -62,8 +82,8 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
-        btFind = new javax.swing.JButton();
-        btUpdate = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         radHoatDong = new javax.swing.JRadioButton();
         radNgung = new javax.swing.JRadioButton();
         txtFind = new javax.swing.JTextField();
@@ -81,7 +101,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         txtGioiTinhNV = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         lbAvatar = new javax.swing.JLabel();
-        btAdd = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         cbRole = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
 
@@ -174,12 +194,12 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        btFind.setText("Tìm");
+        btnTim.setText("Tìm");
 
-        btUpdate.setText("Sửa");
-        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btUpdateActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
@@ -227,10 +247,10 @@ public class TAB5_QLNV extends javax.swing.JFrame {
 
         lbAvatar.setText("[Avatar]");
 
-        btAdd.setText("Thêm");
-        btAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAddActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
@@ -298,9 +318,9 @@ public class TAB5_QLNV extends javax.swing.JFrame {
                                 .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(69, 69, 69)
                                 .addComponent(lbAvatar)
                                 .addGap(72, 72, 72))
@@ -352,14 +372,14 @@ public class TAB5_QLNV extends javax.swing.JFrame {
                             .addComponent(jLabel9)))
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btAdd)
+                            .addComponent(btnThem)
                             .addComponent(lbAvatar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btFind)
+                            .addComponent(btnTim)
                             .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
-                        .addComponent(btUpdate)))
+                        .addComponent(btnSua)))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addContainerGap())
@@ -392,7 +412,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_radNgungActionPerformed
 
-    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
             // 1. Lấy dữ liệu từ form
             String nameAccount = txtUsernameNV.getText().trim();
@@ -432,7 +452,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi khi thêm tài khoản: " + e.getMessage());
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btAddActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtGioiTinhNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGioiTinhNVActionPerformed
         // TODO add your handling code here:
@@ -475,7 +495,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
-    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         try {
             int id = Integer.parseInt(txtNVID.getText().trim()); // hidden hoặc readonly
             String nameAccount = txtTenNV.getText().trim();
@@ -511,7 +531,7 @@ public class TAB5_QLNV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi cập nhật: " + e.getMessage());
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btUpdateActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed
         // TODO add your handling code here:
@@ -553,14 +573,14 @@ public class TAB5_QLNV extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAdd;
-    private javax.swing.JButton btFind;
-    private javax.swing.JButton btUpdate;
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnQLHD;
     private javax.swing.JButton btnQLHD1;
     private javax.swing.JButton btnQLSP;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnTK;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTim;
     private javax.swing.JButton btnTrangChu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

@@ -1,5 +1,8 @@
 package View;
 
+import java.awt.Color;
+import javax.swing.JButton;
+
 
 public class TAB6_ThongKe extends javax.swing.JFrame {
 

@@ -1,11 +1,35 @@
 package View;
 
+import java.awt.Color;
+import javax.swing.JButton;
+
 public class TAB4_QLHD extends javax.swing.JFrame {
 
     public TAB4_QLHD() {
         initComponents();
-    }
+        initUI();
+        JButton[] btn = {
+            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK, btnTimSP
+        };
 
+        for (JButton jbtn : btn) {
+            jbtn.setFocusPainted(false);
+            jbtn.setBackground(Color.WHITE);
+            jbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(new Color(230, 230, 250));
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(Color.WHITE);
+                }
+            });
+
+        }
+    }
+    public void initUI() {
+        
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -264,7 +288,7 @@ public class TAB4_QLHD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimSPActionPerformed
-
+        
     }//GEN-LAST:event_btnTimSPActionPerformed
 
     public static void main(String args[]) {

@@ -207,7 +207,7 @@ public class LoginForm extends javax.swing.JFrame {
         }
 
         if (PasswordAccount.isEmpty()) {
-            txtPW.setBackground(Color.red); 
+            txtPW.setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -219,10 +219,10 @@ public class LoginForm extends javax.swing.JFrame {
                 String role = user.getRoleAccount();
 
                 if ("User".equalsIgnoreCase(role)) {
-                    new TAB2_Order(user.getNameAccount()).setVisible(true);
+                    new TAB1_TrangChu(user.getNameAccount()).setVisible(true);
                     this.dispose();
                 } else if ("Admin".equalsIgnoreCase(role)) {
-                    new TAB2_Order(user.getNameAccount()).setVisible(true);
+                    new TAB1_TrangChu(user.getNameAccount()).setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Role không hợp lệ!");

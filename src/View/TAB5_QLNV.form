@@ -126,9 +126,9 @@
                                   <Component id="txtFind" min="-2" pref="241" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btFind" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btUpdate" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btAdd" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btnTim" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnSua" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnThem" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   <Component id="lbAvatar" min="-2" max="-2" attributes="0"/>
@@ -198,16 +198,16 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnThem" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbAvatar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btFind" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTim" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtFind" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="btUpdate" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSua" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -390,17 +390,17 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btFind">
+        <Component class="javax.swing.JButton" name="btnTim">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xec;m"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btUpdate">
+        <Component class="javax.swing.JButton" name="btnSua">
           <Properties>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUpdateActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radHoatDong">
@@ -485,12 +485,12 @@
             <Property name="text" type="java.lang.String" value="[Avatar]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btAdd">
+        <Component class="javax.swing.JButton" name="btnThem">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbRole">

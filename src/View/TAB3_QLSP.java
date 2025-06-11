@@ -19,18 +19,36 @@ public class TAB3_QLSP extends javax.swing.JFrame {
     public TAB3_QLSP() {
         initComponents();
         initUI();
+        JButton[] btn = {
+            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK, btnTimSP, btnThem, btnSua, btnAn
+        };
+
+        for (JButton jbtn : btn) {
+            jbtn.setFocusPainted(false);
+            jbtn.setBackground(Color.WHITE);
+            jbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(new Color(230, 230, 250));
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    jbtn.setBackground(Color.WHITE);
+                }
+            });
+
+        }
+
     }
 
     public void initUI() {
         DAO dao = new DAO();
         setLocationRelativeTo(null);
-        
-        JButton[] setBtn = {
-            btnTrangChu
+        JButton[] btn = {
+            btnTrangChu, btnOrder, btnQLSP, btnQLHD, btnQLHD1, btnTK
         };
-        
-        for (JButton btn : setBtn) {
-            btn.setFocusPainted(false);
+
+        for (JButton jbtn : btn) {
+            jbtn.setFocusPainted(false);
         }
     }
 

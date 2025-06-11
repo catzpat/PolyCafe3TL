@@ -58,6 +58,8 @@ public class TAB2_Order extends javax.swing.JFrame {
         jTextField3.setText("0");
         jTextField4.setText("");
         jTextField5.setText("0");
+        
+        
     }
 
     /* ==================== LOAD SẢN PHẨM TỪ DB ==================== */
@@ -385,6 +387,16 @@ public class TAB2_Order extends javax.swing.JFrame {
         txtUserName.setText("jLabel1");
 
         btnTrangChu.setText("Trang Chủ");
+        btnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTrangChuMouseClicked(evt);
+            }
+        });
+        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangChuActionPerformed(evt);
+            }
+        });
 
         btnOrder.setText("Order");
 
@@ -971,6 +983,14 @@ public class TAB2_Order extends javax.swing.JFrame {
             hienThiSanPham(loc);
         }
     }//GEN-LAST:event_cbxLoaiSPActionPerformed
+
+    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrangChuActionPerformed
+
+    private void btnTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrangChuMouseClicked
 
     /**
      * @param args the command line arguments
