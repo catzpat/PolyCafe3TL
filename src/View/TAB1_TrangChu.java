@@ -18,6 +18,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
     public TAB1_TrangChu(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
+        setTitle("4KL_Trang Chủ");
         initComponents();
         setLogo();
         setTime();
@@ -106,6 +107,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         btnQLHD = new javax.swing.JButton();
         btnTK = new javax.swing.JButton();
         btnQLHD1 = new javax.swing.JButton();
+        lblDX = new javax.swing.JLabel();
         lblTrangTri = new javax.swing.JLabel();
         lblTrangTri1 = new javax.swing.JLabel();
         lblPMQL = new javax.swing.JLabel();
@@ -113,7 +115,6 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         lblTG = new javax.swing.JLabel();
         lblTen = new javax.swing.JLabel();
         lblVT = new javax.swing.JLabel();
-        lblDX = new javax.swing.JLabel();
         lblBQ = new javax.swing.JLabel();
         lblFPS = new javax.swing.JLabel();
 
@@ -167,6 +168,9 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
             }
         });
 
+        lblDX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDX.setText("[Đăng xuất]");
+
         javax.swing.GroupLayout pnlCNLayout = new javax.swing.GroupLayout(pnlCN);
         pnlCN.setLayout(pnlCNLayout);
         pnlCNLayout.setHorizontalGroup(
@@ -181,6 +185,10 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
                     .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLHD1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(pnlCNLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lblDX, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCNLayout.setVerticalGroup(
             pnlCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +205,9 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
                 .addComponent(btnQLHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+                .addComponent(lblDX)
+                .addGap(16, 16, 16))
         );
 
         lblTrangTri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -228,9 +238,6 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         lblVT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVT.setText("[Nhân Viên/Admin]");
 
-        lblDX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDX.setText("[Đăng xuất]");
-
         lblBQ.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblBQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBQ.setText("[Bản quyền (POLYCAFE_4KL)]");
@@ -245,33 +252,29 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addComponent(pnlCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(499, 499, 499)
+                        .addComponent(lblFPS, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(519, 519, 519))
+                    .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBQ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTrangTri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTrangTri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblPMQL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblPolycafe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblBQ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addGap(505, 505, 505)
-                        .addComponent(lblFPS, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(519, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDX, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(589, 589, 589))))
+                            .addComponent(lblVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
+                .addGap(91, 91, 91)
                 .addComponent(lblFPS, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTrangTri)
@@ -281,14 +284,12 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
                 .addComponent(lblPMQL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPolycafe)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTG)
                 .addGap(40, 40, 40)
                 .addComponent(lblTen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblVT)
-                .addGap(18, 18, 18)
-                .addComponent(lblDX)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblBQ)
                 .addContainerGap())

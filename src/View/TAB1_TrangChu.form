@@ -51,10 +51,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="pnlCN" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="499" max="-2" attributes="0"/>
+                          <Component id="lblFPS" min="-2" pref="265" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="519" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblBQ" max="32767" attributes="0"/>
                               <Component id="lblTrangTri" max="32767" attributes="0"/>
                               <Component id="lblTrangTri1" max="32767" attributes="0"/>
                               <Component id="lblPMQL" alignment="0" max="32767" attributes="0"/>
@@ -62,19 +68,8 @@
                               <Component id="lblTG" max="32767" attributes="0"/>
                               <Component id="lblTen" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblVT" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblBQ" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="505" max="-2" attributes="0"/>
-                          <Component id="lblFPS" min="-2" pref="265" max="-2" attributes="0"/>
-                          <EmptySpace pref="519" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblDX" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="589" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -84,7 +79,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="pnlCN" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                   <Component id="lblFPS" min="-2" pref="65" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTrangTri" min="-2" max="-2" attributes="0"/>
@@ -94,14 +89,12 @@
                   <Component id="lblPMQL" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblPolycafe" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTG" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="lblTen" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblVT" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lblDX" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lblBQ" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -132,6 +125,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="lblDX" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -149,7 +147,9 @@
                       <Component id="btnQLHD1" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="btnTK" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace pref="320" max="32767" attributes="0"/>
+                      <EmptySpace pref="288" max="32767" attributes="0"/>
+                      <Component id="lblDX" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -202,6 +202,12 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLHD1ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDX">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="[&#x110;&#x103;ng xu&#x1ea5;t]"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -266,12 +272,6 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="[Nh&#xe2;n Vi&#xea;n/Admin]"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblDX">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="[&#x110;&#x103;ng xu&#x1ea5;t]"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBQ">

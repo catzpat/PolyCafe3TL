@@ -19,6 +19,7 @@ public class CNT3_ThemSP extends javax.swing.JFrame {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         this.MaSPCanSua = maSP;
+        setTitle("4KL_Thêm SP");
         initComponents();
         initComboBoxes();
         setLocationRelativeTo(null);
@@ -94,7 +95,7 @@ public class CNT3_ThemSP extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlMain.setBackground(new java.awt.Color(223, 255, 214));
+        pnlMain.setBackground(new java.awt.Color(215, 204, 200));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -3,6 +3,9 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="c8" green="cc" red="d7" type="rgb"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -39,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="pnlMain">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d6" green="ff" red="df" type="rgb"/>
+          <Color blue="c8" green="cc" red="d7" type="rgb"/>
         </Property>
       </Properties>
 
@@ -48,39 +51,47 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="388" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel8" min="-2" pref="84" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="btnSua" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" pref="388" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtMaSP" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtAnhSP" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtGiaSP" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtTenSP" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cbxLoaiSP" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cbxTrangThai" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel8" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel3" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="jLabel7" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtMaSP" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtAnhSP" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtGiaSP" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtTenSP" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cbxLoaiSP" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cbxTrangThai" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnSua" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -89,7 +100,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMaSP" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -119,9 +130,9 @@
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAnhSP" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="btnSua" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="224" max="32767" attributes="0"/>
+                  <EmptySpace pref="236" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -14,7 +14,7 @@ public class Initial_Interface extends javax.swing.JFrame {
 
     public void initLayout() {
         setLocationRelativeTo(null);
-        setTitle("4KL");
+        setTitle("4KL_PolyCafe");
         pgLoading.setStringPainted(true);
         // Set time
         Timer timer = new Timer(20, null);
