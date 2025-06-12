@@ -5,12 +5,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class TAB4_QLHD extends javax.swing.JFrame {
+public class A_TAB4_QLHD extends javax.swing.JFrame {
 
     private String NameAccount = "";
     private String RoleAccount;
 
-    public TAB4_QLHD(String NameAccount, String RoleAccount) {
+    public A_TAB4_QLHD(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         initComponents();
@@ -342,34 +342,34 @@ public class TAB4_QLHD extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTimSPActionPerformed
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB2_Order(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
-        new TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB3_QLSP(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLSPActionPerformed
 
     private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
-        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLHD1ActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTKActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB4_QLHD("", "").setVisible(true);
+                new A_TAB4_QLHD("", "").setVisible(true);
             }
         });
     }

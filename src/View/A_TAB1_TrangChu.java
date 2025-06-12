@@ -10,12 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 
-public class TAB1_TrangChu extends javax.swing.JFrame {
+public class A_TAB1_TrangChu extends javax.swing.JFrame {
 
     private String NameAccount;
     private String RoleAccount;
 
-    public TAB1_TrangChu(String NameAccount, String RoleAccount) {
+    public A_TAB1_TrangChu(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         setTitle("4KL_Trang Chủ");
@@ -78,7 +78,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
             int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất?", "Đăng xuất", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 this.dispose();
-                new B2_LoginForm().setVisible(true); // mở lại form đăng nhập
+                new A1_LoginForm().setVisible(true); // mở lại form đăng nhập
             }
         });
     }
@@ -317,7 +317,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null) {
-            new TAB2_Order(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB2_Order(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Hãy đăng nhập để sử dụng chức năng này!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -328,7 +328,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -339,7 +339,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -350,7 +350,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -361,7 +361,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -370,7 +370,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            new TAB1_TrangChu("Null", "???").setVisible(true);
+            new A_TAB1_TrangChu("Null", "???").setVisible(true);
         });
     }
 

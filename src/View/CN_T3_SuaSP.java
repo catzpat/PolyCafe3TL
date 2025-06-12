@@ -5,13 +5,13 @@ import Model.Products;
 import java.io.File;
 import javax.swing.*;
 
-public class CNT3_SuaSP extends javax.swing.JFrame {
+public class CN_T3_SuaSP extends javax.swing.JFrame {
 
     private String NameAccount;
     private String RoleAccount;
     private String maSPCanSua;
 
-    public CNT3_SuaSP(String NameAccount, String RoleAccount, String maSP) {
+    public CN_T3_SuaSP(String NameAccount, String RoleAccount, String maSP) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         this.maSPCanSua = maSP;
@@ -272,7 +272,7 @@ public class CNT3_SuaSP extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CNT3_SuaSP("", "", "").setVisible(true);
+                new CN_T3_SuaSP("", "", "").setVisible(true);
             }
         });
     }

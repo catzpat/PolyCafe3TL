@@ -1,14 +1,14 @@
 package View;
 
-import View.TAB1_TrangChu;
-import View.TAB2_Order;
-import View.TAB4_QLHD;
-import View.TAB5_QLNV;
-import View.TAB6_ThongKe;
+import View.A_TAB1_TrangChu;
+import View.A_TAB2_Order;
+import View.A_TAB4_QLHD;
+import View.A_TAB5_QLNV;
+import View.A_TAB6_ThongKe;
 
 import Controller.DAO;
 import Model.Products;
-import View.CNT3_SuaSP;
+import View.CN_T3_SuaSP;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class TAB3_QLSP extends javax.swing.JFrame {
+public class A_TAB3_QLSP extends javax.swing.JFrame {
 
     private String NameAccount;
     private String RoleAccount;
@@ -38,7 +38,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
         return new DecimalFormat("#,###", s).format(soTien); // Định dạng tiền VD: "20 000"
     }
 
-    public TAB3_QLSP(String NameAccount, String RoleAccount) {
+    public A_TAB3_QLSP(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         initComponents();
@@ -422,7 +422,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxLocSPActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        CNT3_ThemSP themForm = new CNT3_ThemSP(NameAccount, RoleAccount);
+        CN_T3_ThemSP themForm = new CN_T3_ThemSP(NameAccount, RoleAccount);
         themForm.setVisible(true);
 
         themForm.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -452,27 +452,27 @@ public class TAB3_QLSP extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnActionPerformed
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        new TAB2_Order(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB2_Order(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
-        new TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB4_QLHD(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLHDActionPerformed
 
     private void btnQLHD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHD1ActionPerformed
-        new TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB5_QLNV(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLHD1ActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        new TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB6_ThongKe(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTKActionPerformed
 
@@ -508,7 +508,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
 
         String maSP = tblSanPham.getValueAt(row, 0).toString();
 
-        CNT3_SuaSP suaForm = new CNT3_SuaSP(NameAccount, RoleAccount, maSP);
+        CN_T3_SuaSP suaForm = new CN_T3_SuaSP(NameAccount, RoleAccount, maSP);
         suaForm.setVisible(true);
 
         suaForm.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -525,7 +525,7 @@ public class TAB3_QLSP extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB3_QLSP("", "").setVisible(true);
+                new A_TAB3_QLSP("", "").setVisible(true);
             }
         });
     }

@@ -6,9 +6,9 @@ import java.awt.*;
 import static java.awt.Color.white;
 import javax.swing.*;
 
-public class B2_LoginForm extends javax.swing.JFrame {
+public class A1_LoginForm extends javax.swing.JFrame {
 
-    public B2_LoginForm() {
+    public A1_LoginForm() {
         initComponents();
         initLayout();
         setTitle("4KL");
@@ -220,7 +220,7 @@ public class B2_LoginForm extends javax.swing.JFrame {
                 String role = user.getRoleAccount();
 
                 if ("User".equalsIgnoreCase(role) || "Admin".equalsIgnoreCase(role)) {
-                    new TAB1_TrangChu(user_name, role).setVisible(true);
+                    new A_TAB1_TrangChu(user_name, role).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Role không hợp lệ!");
                     return;
@@ -241,7 +241,7 @@ public class B2_LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtForgotMouseClicked
-        CNB2_ChangePW reg = new CNB2_ChangePW();
+        CN_A1_ChangePW reg = new CN_A1_ChangePW();
         reg.setVisible(true);
         this.dispose(); // Xóa form cũ
     }//GEN-LAST:event_txtForgotMouseClicked
@@ -261,7 +261,7 @@ public class B2_LoginForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new B2_LoginForm().setVisible(true);
+                new A1_LoginForm().setVisible(true);
             }
         });
     }

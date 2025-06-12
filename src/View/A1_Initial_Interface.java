@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.sql.*;
 
-public class B1_Initial_Interface extends javax.swing.JFrame {
+public class A1_Initial_Interface extends javax.swing.JFrame {
 
-    public B1_Initial_Interface() {
+    public A1_Initial_Interface() {
         initComponents();
         initLayout();
     }
@@ -26,8 +26,8 @@ public class B1_Initial_Interface extends javax.swing.JFrame {
                     pgLoading.setValue(loading + 1);
                 } else {
                     timer.stop();
-                    B1_Initial_Interface.this.dispose();
-                    B2_LoginForm login = new B2_LoginForm();
+                    A1_Initial_Interface.this.dispose();
+                    A1_LoginForm login = new A1_LoginForm();
                     login.setVisible(true);
                 }
             }
@@ -76,7 +76,7 @@ public class B1_Initial_Interface extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new B1_Initial_Interface().setVisible(true);
+                new A1_Initial_Interface().setVisible(true);
             }
         });
     }

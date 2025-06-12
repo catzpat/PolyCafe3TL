@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TAB2_Order extends javax.swing.JFrame {
+public class A_TAB2_Order extends javax.swing.JFrame {
 
     private String NameAccount;
     private String RoleAccount;
@@ -32,7 +32,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         return new DecimalFormat("#,###", s).format(soTien); // Định dạng tiền VD: "20 000"
     }
 
-    public TAB2_Order(String NameAccount, String RoleAccount) {
+    public A_TAB2_Order(String NameAccount, String RoleAccount) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         initComponents();
@@ -841,7 +841,7 @@ public class TAB2_Order extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addComponent(pnlCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 833, Short.MAX_VALUE)
+                .addComponent(pnlDSSP, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -885,51 +885,78 @@ public class TAB2_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInActionPerformed
 
     private void btnthanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhToanActionPerformed
-        // KT HD rỗng
-        int tongTienSP = parseTien(jTextField1.getText());
-        if (tongTienSP == 0) {
-            JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
-            return;
-        }
+        String[] options = {"Tiền mặt", "Chuyển khoản"};
+    int confirm = JOptionPane.showOptionDialog(
+            this,
+            "Thanh toán bằng hình thức nào?",
+            "Xác nhận",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]
+    );
 
-        // 2. Kiểm tra tiền mặt
-        int thanhToan = parseTien(jTextField3.getText());
-        int tienMat = parseTien(jTextField4.getText());
+    if (confirm == -1) {
+        // [Người dùng đóng hộp thoại]
+        return;
+    }
+
+    // [Lấy tổng tiền]
+    int tongTienSP = parseTien(jTextField1.getText());
+    if (tongTienSP == 0) {
+        JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
+        return;
+    }
+
+    // [Tiền khách thanh toán]
+    int thanhToan = parseTien(jTextField3.getText());
+
+    // [Lấy dữ liệu hóa đơn]
+    String maHD = lblMaHoaDon.getText();
+    int giamGia = parseTien(jTextField2.getText());
+    int tienMat = parseTien(jTextField4.getText());
+    int tienTraLai = parseTien(jTextField5.getText());
+
+    // [Danh sách chi tiết]
+    List<Object[]> chiTiet = new ArrayList<>();
+    DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
+    for (int i = 0; i < model.getRowCount(); i++) {
+        chiTiet.add(new Object[]{
+            model.getValueAt(i, 0), // Tên SP
+            model.getValueAt(i, 1), // Đơn giá
+            model.getValueAt(i, 2), // Số lượng
+            model.getValueAt(i, 3)  // Thành tiền
+        });
+    }
+
+    // [Xử lý theo phương thức thanh toán]
+    if (confirm == 0) {
+        // [Tiền mặt] – kiểm tra tiền mặt có đủ không
         if (tienMat < thanhToan) {
             JOptionPane.showMessageDialog(this, "Tiền mặt không đủ để thanh toán.");
             return;
         }
+    } else if (confirm == 1) {
+        // [Chuyển khoản] – mở QR code
+        new CN_T1_QR().setVisible(true);
+    }
 
-        // 3. Build dữ liệu
-        String maHD = lblMaHoaDon.getText();
-        int giamGia = parseTien(jTextField2.getText());
-        int tienTraLai = parseTien(jTextField5.getText());
+    // [Ghi dữ liệu vào DB]
+    DAO dao = new DAO();
+    boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP,
+            giamGia, thanhToan, tienMat, tienTraLai);
+    boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
 
-        List<Object[]> chiTiet = new ArrayList<>();
-        DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            chiTiet.add(new Object[]{
-                model.getValueAt(i, 0), // Tên SP
-                model.getValueAt(i, 1), // Đơn giá (chuỗi có format)
-                model.getValueAt(i, 2), // Số lượng
-                model.getValueAt(i, 3) // Thành tiền
-            });
-        }
+    if (okHD && okCT) {
+        JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
+        btnMoi.doClick();                // Reset giao diện
+        resetSoLuongTatCaSanPham();
+    } else {
+        JOptionPane.showMessageDialog(this, "Có lỗi khi lưu DB, vui lòng kiểm tra log!");
+    }
 
-        // 4. Ghi DB
-        DAO dao = new DAO();
-        boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP,
-                giamGia, thanhToan, tienMat, tienTraLai);
-        boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
 
-        if (okHD && okCT) {
-            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-            btnMoi.doClick();                // Reset giao diện
-            resetSoLuongTatCaSanPham();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Có lỗi khi lưu DB, vui lòng kiểm tra log!");
-        }
     }//GEN-LAST:event_btnthanhToanActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -1038,7 +1065,7 @@ public class TAB2_Order extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxLoaiSPActionPerformed
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        new TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
+        new A_TAB1_TrangChu(NameAccount, RoleAccount).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
@@ -1055,7 +1082,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         User user = dao.getUserByNameAccount(NameAccount);
         // Nếu chưa đăng nhập hoặc là User thì
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB3_QLSP(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -1066,7 +1093,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB4_QLHD(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -1077,7 +1104,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB5_QLNV(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -1088,7 +1115,7 @@ public class TAB2_Order extends javax.swing.JFrame {
         DAO dao = new DAO();
         User user = dao.getUserByNameAccount(NameAccount);
         if (user != null && "Admin".equalsIgnoreCase(user.getRoleAccount())) {
-            new TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
+            new A_TAB6_ThongKe(NameAccount, user.getRoleAccount()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho Admin!", "Waring", JOptionPane.WARNING_MESSAGE);
@@ -1101,7 +1128,7 @@ public class TAB2_Order extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TAB2_Order("", "").setVisible(true);
+                new A_TAB2_Order("", "").setVisible(true);
             }
         });
     }

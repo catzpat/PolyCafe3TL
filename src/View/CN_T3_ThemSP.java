@@ -5,17 +5,17 @@ import Model.Products;
 import java.io.File;
 import javax.swing.*;
 
-public class CNT3_ThemSP extends javax.swing.JFrame {
+public class CN_T3_ThemSP extends javax.swing.JFrame {
 
     private String NameAccount;
     private String RoleAccount;
     private String MaSPCanSua; // Mã SP cần sửa
 
-    public CNT3_ThemSP(String NameAccount, String RoleAccount) {
+    public CN_T3_ThemSP(String NameAccount, String RoleAccount) {
         this(NameAccount, RoleAccount, null);
     }
 
-    public CNT3_ThemSP(String NameAccount, String RoleAccount, String maSP) {
+    public CN_T3_ThemSP(String NameAccount, String RoleAccount, String maSP) {
         this.NameAccount = NameAccount;
         this.RoleAccount = RoleAccount;
         this.MaSPCanSua = maSP;
@@ -278,7 +278,7 @@ public class CNT3_ThemSP extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CNT3_ThemSP("", "").setVisible(true);
+                new CN_T3_ThemSP("", "").setVisible(true);
             }
         });
     }

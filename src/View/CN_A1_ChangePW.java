@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-public class CNB2_ChangePW extends javax.swing.JFrame {
+public class CN_A1_ChangePW extends javax.swing.JFrame {
 
-    public CNB2_ChangePW() {
+    public CN_A1_ChangePW() {
         initComponents();
         initLayout();
         setTitle("4KL");
@@ -191,7 +191,7 @@ public class CNB2_ChangePW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSignInMouseClicked
-        B2_LoginForm log = new B2_LoginForm();
+        A1_LoginForm log = new A1_LoginForm();
         log.setVisible(true);
         this.dispose(); // Xóa form cũ
     }//GEN-LAST:event_txtSignInMouseClicked
@@ -242,7 +242,7 @@ public class CNB2_ChangePW extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error!", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
         }
-        new B2_LoginForm().setVisible(true);
+        new A1_LoginForm().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_btnLoginActionPerformed
