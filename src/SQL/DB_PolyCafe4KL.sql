@@ -92,12 +92,14 @@ CREATE TABLE HoaDon
     TienTraLai INT,
     FOREIGN KEY (IDAccount) REFERENCES Account(IDAccount)
 );
+GO
 -- Bảng hóa đơn chờ: Lưu HD chưa thanh toán
 CREATE TABLE HoaDonCho
 (
     MaHD VARCHAR(20) PRIMARY KEY,
     ThoiGian TIME NOT NULL,
-    NhanVien NVARCHAR(50) NOT NULL
+    IDAccount INT NOT NULL,
+    FOREIGN KEY (IDAccount) REFERENCES Account(IDAccount)
 );
 GO
 
@@ -117,7 +119,7 @@ GO
 
 CREATE VIEW V_HoaDonCho
 AS
-    SELECT MaHD, ThoiGian, NhanVien
+    SELECT MaHD, ThoiGian, IDAccount
     FROM HoaDonCho;
 GO
 
