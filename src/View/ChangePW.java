@@ -229,6 +229,20 @@ public class ChangePW extends javax.swing.JFrame {
 
 //        -----------------------------------
         DAO dao = new DAO();
+        int result = dao.changePW(userName, OpassWord, NpassWord);
+        switch (result) {
+            case 1:
+                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 0:
+                JOptionPane.showMessageDialog(this, "Tên tài khoản hoặc mật khẩu cũ không đúng!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -1:
+            default:
+                JOptionPane.showMessageDialog(this, "Error!", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void cbShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowActionPerformed

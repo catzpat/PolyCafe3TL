@@ -54,6 +54,24 @@ public class DAO {
         return user;
     }
 
+    public int changePW(String NameAccount, String OldPassword, String NewPassword) {
+        String sql = "{? = CALL SP_ChangePW(?, ?, ?)}";
+        try (Connection conn = DBConnection.connect(); CallableStatement cs = conn.prepareCall(sql)) {
+
+            cs.registerOutParameter(1, Types.INTEGER); // return value
+            cs.setString(2, NameAccount);
+            cs.setString(3, OldPassword);
+            cs.setString(4, NewPassword);
+
+            cs.execute();
+            return cs.getInt(1); // Lấy kết quả: 1 (OK), 0 (sai)
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1; // lỗi kết nối
+        }
+    }
+
 // Lấy tất cả sản phẩm
     public List<Products> getAllProducts() {
         List<Products> list = new ArrayList<>();

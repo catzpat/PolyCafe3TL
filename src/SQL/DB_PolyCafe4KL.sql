@@ -53,7 +53,7 @@ END
 GO
 EXEC SP_AddAccount 1, 'mkhoixyz', '1234', 'khoivmth05018@gmail.com', N'Văn Minh Khôi', N'Nam', 'Admin';
 EXEC SP_AddAccount 2, 'catzpat', '1234', 'catzpat123@gmail.com', N'Trương Đức Nam Khánh', N'Nam', 'Admin';
-EXEC SP_AddAccount 3, 'nqh1089', '1234', 'huynqth05211@gmail.com', N'Nguyễn Quang Huy', N'Nam', 'User';
+EXEC SP_AddAccount 3, 'nqh1089', '1234', 'huynqth05211@gmail.com', N'Nguyễn Quang Huy', N'Nam', 'Admin';
 EXEC SP_AddAccount 4, 'bnah07', '1234', 'han07092008@gmail.com', N'Trần Bảo Hân', N'Nữ', 'User';
 SELECT *
 FROM Account
@@ -154,8 +154,29 @@ CREATE TABLE Products
     -- 0: Còn bán, 1: Ngừng bán
 );
 GO
+CREATE PROC SP_ChangePW
+    @NameAccount VARCHAR(50),
+    @OldPassword VARCHAR(50),
+    @NewPassword VARCHAR(50)
+AS
+BEGIN
+    IF EXISTS (
+        SELECT * FROM Account
+        WHERE NameAccount = @NameAccount AND PasswordAccount = @OldPassword
+    )
+    BEGIN
+        UPDATE Account
+        SET PasswordAccount = @NewPassword
+        WHERE NameAccount = @NameAccount;
 
-
+        RETURN 1; -- Thành công
+    END
+    ELSE
+    BEGIN
+        RETURN 0; -- Sai thông tin
+    END
+END
+GO
 INSERT INTO Products
 VALUES
     -- Trà sữa
@@ -186,4 +207,5 @@ GO
 SELECT *
 FROM Account
 
-SELECT * FROM HoaDonCho;
+SELECT *
+FROM HoaDonCho;
