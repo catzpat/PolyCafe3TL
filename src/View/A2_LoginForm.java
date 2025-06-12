@@ -6,9 +6,9 @@ import java.awt.*;
 import static java.awt.Color.white;
 import javax.swing.*;
 
-public class LoginForm extends javax.swing.JFrame {
+public class A2_LoginForm extends javax.swing.JFrame {
 
-    public LoginForm() {
+    public A2_LoginForm() {
         initComponents();
         initLayout();
         setTitle("4KL");
@@ -241,7 +241,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtForgotMouseClicked
-        ChangePW reg = new ChangePW();
+        A3_ChangePW reg = new A3_ChangePW();
         reg.setVisible(true);
         this.dispose(); // Xóa form cũ
     }//GEN-LAST:event_txtForgotMouseClicked
@@ -261,7 +261,7 @@ public class LoginForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                new A2_LoginForm().setVisible(true);
             }
         });
     }

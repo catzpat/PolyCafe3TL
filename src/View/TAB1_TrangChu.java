@@ -78,7 +78,7 @@ public class TAB1_TrangChu extends javax.swing.JFrame {
             int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất?", "Đăng xuất", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 this.dispose();
-                new LoginForm().setVisible(true); // mở lại form đăng nhập
+                new A2_LoginForm().setVisible(true); // mở lại form đăng nhập
             }
         });
     }
