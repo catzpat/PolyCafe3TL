@@ -886,76 +886,77 @@ public class A_TAB2_Order extends javax.swing.JFrame {
 
     private void btnthanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhToanActionPerformed
         String[] options = {"Tiền mặt", "Chuyển khoản"};
-    int confirm = JOptionPane.showOptionDialog(
-            this,
-            "Thanh toán bằng hình thức nào?",
-            "Xác nhận",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            options,
-            options[0]
-    );
+        int confirm = JOptionPane.showOptionDialog(
+                this,
+                "Thanh toán bằng hình thức nào?",
+                "Xác nhận",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]
+        );
 
-    if (confirm == -1) {
-        // [Người dùng đóng hộp thoại]
-        return;
-    }
-
-    // [Lấy tổng tiền]
-    int tongTienSP = parseTien(jTextField1.getText());
-    if (tongTienSP == 0) {
-        JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
-        return;
-    }
-
-    // [Tiền khách thanh toán]
-    int thanhToan = parseTien(jTextField3.getText());
-
-    // [Lấy dữ liệu hóa đơn]
-    String maHD = lblMaHoaDon.getText();
-    int giamGia = parseTien(jTextField2.getText());
-    int tienMat = parseTien(jTextField4.getText());
-    int tienTraLai = parseTien(jTextField5.getText());
-
-    // [Danh sách chi tiết]
-    List<Object[]> chiTiet = new ArrayList<>();
-    DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
-    for (int i = 0; i < model.getRowCount(); i++) {
-        chiTiet.add(new Object[]{
-            model.getValueAt(i, 0), // Tên SP
-            model.getValueAt(i, 1), // Đơn giá
-            model.getValueAt(i, 2), // Số lượng
-            model.getValueAt(i, 3)  // Thành tiền
-        });
-    }
-
-    // [Xử lý theo phương thức thanh toán]
-    if (confirm == 0) {
-        // [Tiền mặt] – kiểm tra tiền mặt có đủ không
-        if (tienMat < thanhToan) {
-            JOptionPane.showMessageDialog(this, "Tiền mặt không đủ để thanh toán.");
+        if (confirm == -1) {
+            // Người dùng đóng hộp thoại
             return;
         }
-    } else if (confirm == 1) {
-        // [Chuyển khoản] – mở QR code
-        new CN_T1_QR().setVisible(true);
-    }
 
-    // [Ghi dữ liệu vào DB]
-    DAO dao = new DAO();
-    boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP,
-            giamGia, thanhToan, tienMat, tienTraLai);
-    boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
+        // Lấy tổng tiền sản phẩm
+        int tongTienSP = parseTien(jTextField1.getText());
+        if (tongTienSP == 0) {
+            JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
+            return;
+        }
 
-    if (okHD && okCT) {
-        JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-        btnMoi.doClick();                // Reset giao diện
-        resetSoLuongTatCaSanPham();
-    } else {
-        JOptionPane.showMessageDialog(this, "Có lỗi khi lưu DB, vui lòng kiểm tra log!");
-    }
+        // Tiền khách cần thanh toán (sau giảm)
+        int thanhToan = parseTien(jTextField3.getText());
 
+        // Lấy dữ liệu hóa đơn
+        String maHD = lblMaHoaDon.getText();
+        int giamGia = parseTien(jTextField2.getText());
+
+        int tienMat;
+        int tienTraLai;
+
+        if (confirm == 0) {
+            // THANH TOÁN TIỀN MẶT
+            tienMat = parseTien(jTextField4.getText());
+            if (tienMat < thanhToan) {
+                JOptionPane.showMessageDialog(this, "Tiền mặt không đủ để thanh toán.");
+                return;
+            }
+            tienTraLai = tienMat - thanhToan;
+
+            // Lấy danh sách chi tiết hóa đơn và lưu DB, hiện thông báo thành công
+            List<Object[]> chiTiet = new ArrayList<>();
+            DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                chiTiet.add(new Object[]{
+                    model.getValueAt(i, 0),
+                    parseTien(model.getValueAt(i, 1).toString()),
+                    Integer.parseInt(model.getValueAt(i, 2).toString()),
+                    parseTien(model.getValueAt(i, 3).toString())
+                });
+            }
+
+            DAO dao = new DAO();
+            boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP, giamGia, thanhToan, tienMat, tienTraLai);
+            boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
+
+            if (okHD && okCT) {
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
+                btnMoi.doClick();
+                resetSoLuongTatCaSanPham();
+            } else {
+                JOptionPane.showMessageDialog(this, "Có lỗi khi lưu DB, vui lòng kiểm tra log!");
+            }
+        } else {
+            // THANH TOÁN CHUYỂN KHOẢN: chỉ show form QR, không xử lý lưu DB hay hiện thông báo
+            new CN_T1_QR().setVisible(true);
+            System.out.println("Hello bạn đã mở Form QR");
+            return;
+        }
 
     }//GEN-LAST:event_btnthanhToanActionPerformed
 
@@ -984,7 +985,9 @@ public class A_TAB2_Order extends javax.swing.JFrame {
         if (soHoaDon > 999) {
             soHoaDon = 1;
         }
-        lblMaHoaDon.setText("HD" + soHoaDon++);
+        DAO dao = new DAO();
+        soHoaDon = dao.getMaxSoHoaDon() + 1;
+        lblMaHoaDon.setText("HD" + soHoaDon);
         lblNgayGio.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
     }//GEN-LAST:event_btnXoaActionPerformed
 

@@ -192,12 +192,12 @@ public class DAO {
     }
 
 // Hóa đơn
-    public boolean insertHoaDon(String maHD, String nhanVien, int tongTien, int giamGia, int thanhToan, int tienMat, int tienTraLai) {
-        String sql = "INSERT INTO HoaDon (MaHD, NgayLap, NhanVien, TongTien, GiamGia, ThanhToan, TienMat, TienTraLai) "
+    public boolean insertHoaDon(String maHD, String NameAccount, int tongTien, int giamGia, int thanhToan, int tienMat, int tienTraLai) {
+        String sql = "INSERT INTO HoaDon (MaHD, NgayLap, NameAccount, TongTien, GiamGia, ThanhToan, TienMat, TienTraLai) "
                 + "VALUES (?, GETDATE(), ?, ?, ?, ?, ?, ?)";
         try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, maHD);
-            ps.setString(2, nhanVien);
+            ps.setString(2, NameAccount);
             ps.setInt(3, tongTien);
             ps.setInt(4, giamGia);
             ps.setInt(5, thanhToan);
@@ -237,16 +237,30 @@ public class DAO {
         }
     }
 
-    public boolean insertHoaDonCho(String maHD, String thoiGian, String nhanVien) {
-        String sql = "INSERT INTO HoaDonCho (MaHD, ThoiGian, NhanVien) VALUES (?,?,?)";
+    public boolean insertHoaDonCho(String maHD, String thoiGian, String NameAccount) {
+        String sql = "INSERT INTO HoaDonCho (MaHD, ThoiGian, NameAccount) VALUES (?,?,?)";
         try (Connection c = DBConnection.connect(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, maHD);
             ps.setString(2, thoiGian);
-            ps.setString(3, nhanVien);
+            ps.setString(3, NameAccount);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
+
+    public int getMaxSoHoaDon() {
+        String sql = "SELECT MAX(CAST(SUBSTRING(MaHD, 3, LEN(MaHD)) AS INT)) AS maxHD FROM HoaDon";
+        try (Connection con = DBConnection.connect(); Statement st = con.createStatement()) {
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("maxHD");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0; // nếu không có hóa đơn nào
+    }
 }
+

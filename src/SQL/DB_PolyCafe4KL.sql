@@ -18,7 +18,6 @@ CREATE TABLE Account
     Created_at DATETIME DEFAULT GETDATE()
 );
 GO
-
 CREATE PROC SP_AddAccount
     @IDAccount INT,
     @NameAccount VARCHAR(50),
@@ -51,13 +50,6 @@ BEGIN
         (@IDAccount, @NameAccount, @PasswordAccount, @Email, @UserName, @Sex, @RoleAccount)
 END
 GO
-EXEC SP_AddAccount 1, 'mkhoixyz', '1234', 'khoivmth05018@gmail.com', N'Văn Minh Khôi', N'Nam', 'Admin';
-EXEC SP_AddAccount 2, 'catzpat', '1234', 'catzpat123@gmail.com', N'Trương Đức Nam Khánh', N'Nam', 'Admin';
-EXEC SP_AddAccount 3, 'nqh1089', '1234', 'huynqth05211@gmail.com', N'Nguyễn Quang Huy', N'Nam', 'Admin';
-EXEC SP_AddAccount 4, 'bnah07', '1234', 'han07092008@gmail.com', N'Trần Bảo Hân', N'Nữ', 'User';
-SELECT *
-FROM Account
-GO
 
 CREATE VIEW V_Account
 AS
@@ -84,12 +76,12 @@ CREATE TABLE HoaDon
 (
     MaHD VARCHAR(20) PRIMARY KEY,
     NgayLap DATETIME NOT NULL,
-    NhanVien INT NOT NULL,
+    NameAccount VARCHAR(50) NOT NULL,
     TongTien INT,
     GiamGia INT,
     ThanhToan INT,
     TienMat INT,
-    TienTraLai INT,
+    TienTraLai INT
 );
 GO
 -- Bảng hóa đơn chờ: Lưu HD chưa thanh toán
@@ -97,7 +89,7 @@ CREATE TABLE HoaDonCho
 (
     MaHD VARCHAR(20) PRIMARY KEY,
     ThoiGian TIME NOT NULL,
-    NhanVien INT NOT NULL,
+    NameAccount VARCHAR(50) NOT NULL
 );
 GO
 
@@ -110,20 +102,18 @@ CREATE TABLE ChiTietHoaDon
     TenSP NVARCHAR(100),
     DonGia INT,
     SoLuong INT,
-    ThanhTien INT,
-    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD)
-);
+    ThanhTien INT);
 GO
 
 CREATE VIEW V_HoaDonCho
 AS
-    SELECT MaHD, ThoiGian, IDAccount
+    SELECT MaHD, ThoiGian, NameAccount
     FROM HoaDonCho;
 GO
 
 CREATE VIEW V_HoaDonTongHop
 AS
-    SELECT MaHD, NgayLap, IDAccount, TongTien, GiamGia, ThanhToan, TienMat, TienTraLai
+    SELECT MaHD, NgayLap, NameAccount, TongTien, GiamGia, ThanhToan, TienMat, TienTraLai
     FROM HoaDon;
 GO
 
@@ -132,7 +122,7 @@ AS
     SELECT
         hd.MaHD,
         hd.NgayLap,
-        hd.IDAccount,
+        hd.NameAccount,
         ct.TenSP,
         ct.DonGia,
         ct.SoLuong,
@@ -159,21 +149,30 @@ CREATE PROC SP_ChangePW
 AS
 BEGIN
     IF EXISTS (
-        SELECT * FROM Account
-        WHERE NameAccount = @NameAccount AND PasswordAccount = @OldPassword
+        SELECT *
+    FROM Account
+    WHERE NameAccount = @NameAccount AND PasswordAccount = @OldPassword
     )
     BEGIN
         UPDATE Account
         SET PasswordAccount = @NewPassword
         WHERE NameAccount = @NameAccount;
 
-        RETURN 1; -- Thành công
+        RETURN 1;
+    -- Thành công
     END
     ELSE
     BEGIN
-        RETURN 0; -- Sai thông tin
+        RETURN 0;
+    -- Sai thông tin
     END
 END
+GO
+ALTER TABLE HoaDon
+ADD CONSTRAINT FK_HoaDon_Account FOREIGN KEY (NameAccount) REFERENCES Account(NameAccount);
+
+ALTER TABLE HoaDonCho
+ADD CONSTRAINT FK_HoaDonCho_Account FOREIGN KEY (NameAccount) REFERENCES Account(NameAccount);
 GO
 INSERT INTO Products
 VALUES
@@ -201,7 +200,11 @@ VALUES
     ('ST03', N'Sinh tố dâu', N'Sinh tố', 29000, 'ST_Dau.jpg', 0),
     ('ST04', N'Sinh tố mãng cầu', N'Sinh tố', 30000, 'ST_MangCau.jpg', 0);
 GO
-
+EXEC SP_AddAccount 1, 'mkhoixyz', '1234', 'khoivmth05018@gmail.com', N'Văn Minh Khôi', N'Nam', 'Admin';
+EXEC SP_AddAccount 2, 'catzpat', '1234', 'catzpat123@gmail.com', N'Trương Đức Nam Khánh', N'Nam', 'Admin';
+EXEC SP_AddAccount 3, 'nqh1089', '1234', 'huynqth05211@gmail.com', N'Nguyễn Quang Huy', N'Nam', 'Admin';
+EXEC SP_AddAccount 4, 'bnah07', '1234', 'han07092008@gmail.com', N'Trần Bảo Hân', N'Nữ', 'User';
+GO
 SELECT *
 FROM Account
 
