@@ -610,7 +610,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnXoa" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnthanhToan" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnThanhToan" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnIn" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -623,7 +623,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnIn" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="btnthanhToan" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnThanhToan" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnXoa" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnCho" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnMoi" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -642,12 +642,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnthanhToan">
+                <Component class="javax.swing.JButton" name="btnThanhToan">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Thanh To&#xe1;n"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnthanhToanActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhToanActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoa">

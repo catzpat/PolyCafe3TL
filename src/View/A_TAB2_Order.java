@@ -394,7 +394,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlChucNang = new javax.swing.JPanel();
         btnIn = new javax.swing.JButton();
-        btnthanhToan = new javax.swing.JButton();
+        btnThanhToan = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnCho = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
@@ -722,10 +722,10 @@ public class A_TAB2_Order extends javax.swing.JFrame {
             }
         });
 
-        btnthanhToan.setText("Thanh Toán");
-        btnthanhToan.addActionListener(new java.awt.event.ActionListener() {
+        btnThanhToan.setText("Thanh Toán");
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthanhToanActionPerformed(evt);
+                btnThanhToanActionPerformed(evt);
             }
         });
 
@@ -762,7 +762,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnthanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -773,7 +773,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnthanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCho, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -841,7 +841,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addComponent(pnlCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlDSSP, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
+                .addComponent(pnlDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 833, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -884,7 +884,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnInActionPerformed
 
-    private void btnthanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhToanActionPerformed
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         String[] options = {"Tiền mặt", "Chuyển khoản"};
         int confirm = JOptionPane.showOptionDialog(
                 this,
@@ -898,37 +898,30 @@ public class A_TAB2_Order extends javax.swing.JFrame {
         );
 
         if (confirm == -1) {
-            // Người dùng đóng hộp thoại
             return;
         }
 
-        // Lấy tổng tiền sản phẩm
         int tongTienSP = parseTien(jTextField1.getText());
         if (tongTienSP == 0) {
             JOptionPane.showMessageDialog(this, "Hóa đơn đang trống!");
             return;
         }
 
-        // Tiền khách cần thanh toán (sau giảm)
-        int thanhToan = parseTien(jTextField3.getText());
-
-        // Lấy dữ liệu hóa đơn
         String maHD = lblMaHoaDon.getText();
         int giamGia = parseTien(jTextField2.getText());
+        int thanhToan = parseTien(jTextField3.getText());
 
-        int tienMat;
-        int tienTraLai;
-
+        // Hình thức thanh toán
         if (confirm == 0) {
-            // THANH TOÁN TIỀN MẶT
-            tienMat = parseTien(jTextField4.getText());
+            // TIỀN MẶT
+            int tienMat = parseTien(jTextField4.getText());
             if (tienMat < thanhToan) {
                 JOptionPane.showMessageDialog(this, "Tiền mặt không đủ để thanh toán.");
                 return;
             }
-            tienTraLai = tienMat - thanhToan;
+            int tienTraLai = tienMat - thanhToan;
 
-            // Lấy danh sách chi tiết hóa đơn và lưu DB, hiện thông báo thành công
+            // Lấy danh sách chi tiết
             List<Object[]> chiTiet = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) tblTTHD.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -940,6 +933,7 @@ public class A_TAB2_Order extends javax.swing.JFrame {
                 });
             }
 
+            // Ghi DB
             DAO dao = new DAO();
             boolean okHD = dao.insertHoaDon(maHD, NameAccount, tongTienSP, giamGia, thanhToan, tienMat, tienTraLai);
             boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
@@ -951,17 +945,18 @@ public class A_TAB2_Order extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Có lỗi khi lưu DB, vui lòng kiểm tra log!");
             }
+
         } else {
-            // THANH TOÁN CHUYỂN KHOẢN: chỉ show form QR, không xử lý lưu DB hay hiện thông báo
-            new CN_T1_QR().setVisible(true);
-            System.out.println("Hello bạn đã mở Form QR");
+            // CHUYỂN KHOẢN
+            // -> Mở form mã QR -> xử lý bên tabQR
+
+            new CN_T2_QR(maHD, NameAccount, tongTienSP, giamGia, thanhToan, tblTTHD).setVisible(true);
             return;
         }
-
-    }//GEN-LAST:event_btnthanhToanActionPerformed
+    }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-// Nếu bảng tblTTHD và bảng HĐ chờ đều đang rỗng thì không cho xóa
+        // Nếu bảng tblTTHD và bảng HĐ chờ đều đang rỗng thì không cho xóa
         if (tblTTHD.getRowCount() == 0 && tblHDC.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Không có hóa đơn nào để xóa!");
             return;
@@ -1145,9 +1140,9 @@ public class A_TAB2_Order extends javax.swing.JFrame {
     private javax.swing.JButton btnQLHD1;
     private javax.swing.JButton btnQLSP;
     private javax.swing.JButton btnTK;
+    private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnTrangChu;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnthanhToan;
     private javax.swing.JComboBox<String> cbxLoaiSP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;

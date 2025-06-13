@@ -250,6 +250,7 @@ public class DAO {
         }
     }
 
+    // Lấy mã hóa đơn lớn nhất từ db
     public int getMaxSoHoaDon() {
         String sql = "SELECT MAX(CAST(SUBSTRING(MaHD, 3, LEN(MaHD)) AS INT)) AS maxHD FROM HoaDon";
         try (Connection con = DBConnection.connect(); Statement st = con.createStatement()) {
@@ -262,5 +263,195 @@ public class DAO {
         }
         return 0; // nếu không có hóa đơn nào
     }
-}
 
+    // Đếm tổng số đơn hàng trong bảng Hóa Đơn
+    public int demTongSoDonHang() {
+        String sql = "SELECT COUNT(*) FROM HoaDon";
+        return getIntResult(sql);
+    }
+
+    // Đếm tổng số hóa đơn chờ trong bảng HóaDonCho
+    public int demHoaDonCho() {
+        String sql = "SELECT COUNT(*) FROM HoaDonCho";
+        return getIntResult(sql);
+    }
+
+    // Đếm số hóa đơn đã thanh toán (ThanhToan >= TongTien)
+    public int demHoaDonDaThanhToan() {
+        String sql = "SELECT COUNT(*) FROM HoaDon WHERE ThanhToan >= TongTien";
+        return getIntResult(sql);
+    }
+
+    // Lấy toàn bộ danh sách hóa đơn
+    public List<Object[]> getAllHoaDon() {
+        List<Object[]> list = new ArrayList<>();
+        String sql = "SELECT MaHD, FORMAT(NgayLap, 'dd/MM/yyyy'), TongTien, "
+                + "CASE WHEN ThanhToan >= TongTien THEN N'Đã thanh toán' ELSE N'Chưa thanh toán' END AS TrangThai, "
+                + "CASE WHEN TienMat > 0 THEN N'Tiền mặt' ELSE N'Chuyển khoản' END AS HinhThuc "
+                + "FROM HoaDon";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("MaHD"),
+                    rs.getString(2),
+                    rs.getInt("TongTien"),
+                    rs.getString("TrangThai"),
+                    rs.getString("HinhThuc")
+                };
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // Tìm hóa đơn theo mã
+    public List<Object[]> selectHoaDonByMa(String maHD) {
+        List<Object[]> list = new ArrayList<>();
+        String sql = "SELECT MaHD, FORMAT(NgayLap, 'dd/MM/yyyy'), TongTien, "
+                + "CASE WHEN ThanhToan >= TongTien THEN N'Đã thanh toán' ELSE N'Chưa thanh toán' END AS TrangThai, "
+                + "CASE WHEN TienMat > 0 THEN N'Tiền mặt' ELSE N'Chuyển khoản' END AS HinhThuc "
+                + "FROM HoaDon WHERE MaHD LIKE ?";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, "%" + maHD + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("MaHD"),
+                    rs.getString(2),
+                    rs.getInt("TongTien"),
+                    rs.getString("TrangThai"),
+                    rs.getString("HinhThuc")
+                };
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // Lọc hóa đơn theo trạng thái, hình thức, ngày
+    public List<Object[]> locHoaDon(String trangThai, String hinhThuc, Date ngayChon) {
+        List<Object[]> list = new ArrayList<>();
+        StringBuilder sql = new StringBuilder(
+                "SELECT MaHD, FORMAT(NgayLap, 'dd/MM/yyyy'), TongTien, "
+                + "CASE WHEN ThanhToan >= TongTien THEN N'Đã thanh toán' ELSE N'Chưa thanh toán' END AS TrangThai, "
+                + "CASE WHEN TienMat > 0 THEN N'Tiền mặt' ELSE N'Chuyển khoản' END AS HinhThuc "
+                + "FROM HoaDon WHERE 1=1"
+        );
+
+        List<Object> params = new ArrayList<>();
+
+        if (!trangThai.equals("Tất cả")) {
+            if (trangThai.equals("Đã thanh toán")) {
+                sql.append(" AND ThanhToan >= TongTien");
+            } else if (trangThai.equals("Chưa thanh toán")) {
+                sql.append(" AND ThanhToan < TongTien");
+            }
+        }
+
+        if (!hinhThuc.equals("Tất cả")) {
+            if (hinhThuc.equals("Tiền mặt")) {
+                sql.append(" AND TienMat > 0");
+            } else if (hinhThuc.equals("Chuyển khoản")) {
+                sql.append(" AND TienMat = 0");
+            }
+        }
+
+        if (ngayChon != null) {
+            sql.append(" AND CONVERT(DATE, NgayLap) = ?");
+            params.add(new java.sql.Date(ngayChon.getTime()));
+        }
+
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql.toString())) {
+
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("MaHD"),
+                    rs.getString(2),
+                    rs.getInt("TongTien"),
+                    rs.getString("TrangThai"),
+                    rs.getString("HinhThuc")
+                };
+                list.add(row);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    // Lấy danh sách chi tiết hóa đơn theo mã
+    public List<Object[]> getChiTietHoaDon(String maHD) {
+        List<Object[]> list = new ArrayList<>();
+        String sql = "SELECT TenSP, DonGia, SoLuong, ThanhTien FROM ChiTietHoaDon WHERE MaHD = ?";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, maHD);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("TenSP"),
+                    rs.getInt("DonGia"),
+                    rs.getInt("SoLuong"),
+                    rs.getInt("ThanhTien")
+                };
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // Lấy thông tin của hóa đơn
+    public Object[] getThongTinHoaDon(String maHD) {
+        String sql = "SELECT FORMAT(NgayLap, 'dd/MM/yyyy HH:mm'), MaNV, TongTien, GiamGia, ThanhToan, TienMat, TienTraLai FROM HoaDon WHERE MaHD = ?";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, maHD);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Object[]{
+                    rs.getString(1), // Ngày lập
+                    rs.getString(2), // Mã NV
+                    rs.getInt(3), // Tổng tiền SP
+                    rs.getInt(4), // Giảm giá
+                    rs.getInt(5), // Thành tiền
+                    rs.getInt(6), // Tiền mặt
+                    rs.getInt(7) // Tiền trả lại
+                };
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Hàm dùng chung để lấy 1 số nguyên từ câu truy vấn
+    private int getIntResult(String sql) {
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+}
