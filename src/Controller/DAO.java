@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.DBConnection;
 import java.sql.*;
 import Model.User;
 import Model.Products;
@@ -264,6 +265,11 @@ public class DAO {
         return 0; // nếu không có hóa đơn nào
     }
 
+    public String taoMaHoaDonMoi() {
+        int so = getMaxSoHoaDon() + 1;
+        return String.format("HD%03d", so); // Ví dụ: HD001, HD002
+    }
+
     // Đếm tổng số đơn hàng trong bảng Hóa Đơn
     public int demTongSoDonHang() {
         String sql = "SELECT COUNT(*) FROM HoaDon";
@@ -335,7 +341,7 @@ public class DAO {
         return list;
     }
 
-    // Lọc hóa đơn theo trạng thái, hình thức, ngày
+    // Lọc hóa đơn theo trạng thái, hình thức, ngày - TAB4
     public List<Object[]> locHoaDon(String trangThai, String hinhThuc, Date ngayChon) {
         List<Object[]> list = new ArrayList<>();
         StringBuilder sql = new StringBuilder(
@@ -448,6 +454,81 @@ public class DAO {
         try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
                 return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    //TAB6
+    // Lấy danh sách sản phẩm bán được, sắp xếp từ cao xuống thấp, bao gồm cả sản phẩm không bán được
+    public List<Object[]> thongKeSanPham() {
+        List<Object[]> list = new ArrayList<>();
+
+        String sql
+                = "SELECT p.MaSP, p.TenSP, p.LoaiSP, p.Gia, p.HinhAnh, p.TrangThaiBan, "
+                + "       ISNULL(SUM(ct.SoLuong), 0) AS SoLuongBan "
+                + "FROM Products p "
+                + "LEFT JOIN ChiTietHoaDon ct ON p.TenSP = ct.TenSP "
+                + "GROUP BY p.MaSP, p.TenSP, p.LoaiSP, p.Gia, p.HinhAnh, p.TrangThaiBan "
+                + "ORDER BY SoLuongBan DESC";
+
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Object[] row = new Object[]{
+                    rs.getString("MaSP"),
+                    rs.getString("TenSP"),
+                    rs.getString("LoaiSP"),
+                    rs.getInt("Gia"),
+                    rs.getString("HinhAnh"),
+                    rs.getString("TrangThaiBan"),
+                    rs.getInt("SoLuongBan")
+                };
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    // Tổng doanh thu
+    public int getTongDoanhThu() {
+        String sql = "SELECT SUM(ThanhToan) AS Tong FROM HoaDon";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                int value = rs.getInt("Tong");
+                return rs.wasNull() ? 0 : value;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // Tổng số hóa đơn
+    public int getTongSoHoaDon() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM HoaDon";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("SoLuong");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // Tổng số sản phẩm đã bán
+    public int getTongSanPhamBan() {
+        String sql = "SELECT SUM(SoLuong) AS Tong FROM ChiTietHoaDon";
+        try (Connection con = DBConnection.connect(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                int value = rs.getInt("Tong");
+                return rs.wasNull() ? 0 : value;
             }
         } catch (Exception e) {
             e.printStackTrace();

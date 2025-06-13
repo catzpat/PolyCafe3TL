@@ -104,6 +104,11 @@ public class CN_T2_QR extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
+        DAO dao = new DAO();
+
+        // Lấy mã hóa đơn mới từ DB để tránh trùng
+        String maHD = dao.taoMaHoaDonMoi();
+
         int tienMat = thanhToan;
         int tienTraLai = 0;
 
@@ -111,24 +116,23 @@ public class CN_T2_QR extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblChiTiet.getModel();
         for (int i = 0; i < model.getRowCount(); i++) {
             chiTiet.add(new Object[]{
-                model.getValueAt(i, 0),
-                model.getValueAt(i, 1),
-                model.getValueAt(i, 2),
-                model.getValueAt(i, 3)
+                model.getValueAt(i, 0), // Tên sản phẩm
+                model.getValueAt(i, 1), // Đơn giá
+                model.getValueAt(i, 2), // Số lượng
+                model.getValueAt(i, 3) // Thành tiền
             });
         }
 
-        DAO dao = new DAO();
+        // Lưu vào DB
         boolean okHD = dao.insertHoaDon(maHD, nguoiTao, tongTienSP, giamGia, thanhToan, tienMat, tienTraLai);
         boolean okCT = dao.insertChiTietHoaDon(maHD, chiTiet);
 
         if (okHD && okCT) {
-            JOptionPane.showMessageDialog(this, "Thanh toan thanh cong!");
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
             dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Loi khi luu vao DB!");
+            JOptionPane.showMessageDialog(this, "Lỗi khi lưu vào DB!");
         }
-        
     }//GEN-LAST:event_btnDoneActionPerformed
 
 
