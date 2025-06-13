@@ -194,46 +194,53 @@ public class A1_LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // Lấy thông tin nhập vào
         String NameAccount = txtName.getText().trim();
         String PasswordAccount = new String(txtPW.getPassword()).trim();
 
-        txtName.setBackground(white);
-        txtPW.setBackground(white);
+        // Reset màu nền ô input
+        txtName.setBackground(Color.WHITE);
+        txtPW.setBackground(Color.WHITE);
 
+        // Kiểm tra dữ liệu trống
         if (NameAccount.isEmpty()) {
             txtName.setBackground(Color.PINK);
-            JOptionPane.showMessageDialog(this, "Tên không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Tên không được để trống", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (PasswordAccount.isEmpty()) {
             txtPW.setBackground(Color.PINK);
-            JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        // Gọi DAO để kiểm tra tài khoản
         DAO dao = new DAO();
         User user = dao.login(NameAccount, PasswordAccount);
-        boolean checkStatus = user.isAccountStatus();
-        if (user != null) {
-            if (checkStatus) { // AccountStatus == false (1 - còn hoạt động)
-                String user_name = user.getNameAccount();
-                String role = user.getRoleAccount();
 
-                if ("User".equalsIgnoreCase(role) || "Admin".equalsIgnoreCase(role)) {
-                    new A_TAB1_TrangChu(user_name, role).setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Role không hợp lệ!");
-                    return;
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Tài khoản đã ngưng hoạt động!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Tên đăng nhập hoặc mật khẩu không đúng", "Error", JOptionPane.ERROR_MESSAGE);
+        // Xử lý khi không tìm thấy tài khoản
+        if (user == null) {
+            JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        this.dispose();
+
+        // Kiểm tra trạng thái tài khoản
+        if (!user.isAccountStatus()) {
+            JOptionPane.showMessageDialog(this, "Tài khoản đã bị khóa hoặc ngưng hoạt động!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Đăng nhập thành công
+        String user_name = user.getNameAccount();
+        String role = user.getRoleAccount();
+
+        if ("User".equalsIgnoreCase(role) || "Admin".equalsIgnoreCase(role)) {
+            new A_TAB1_TrangChu(user_name, role).setVisible(true);
+            this.dispose();  // đóng form login
+        } else {
+            JOptionPane.showMessageDialog(this, "Quyền truy cập không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
