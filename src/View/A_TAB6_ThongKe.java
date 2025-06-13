@@ -66,7 +66,7 @@ public class A_TAB6_ThongKe extends javax.swing.JFrame {
         int tongSP = dao.getTongSanPhamBan();
         int tongHD = dao.getTongSoHoaDon();
 
-        lblDT.setText("TỔNG DOANH THU: " + String.format("%,d đ", doanhThu));
+        lblDT.setText("TỔNG DOANH THU: " + formatTien(doanhThu));
         lblSanPham.setText("TỔNG SẢN PHẨM: " + tongSP);
         lblHoaDon.setText("TỔNG HÓA ĐƠN: " + tongHD);
 
