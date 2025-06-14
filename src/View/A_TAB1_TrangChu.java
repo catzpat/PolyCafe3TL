@@ -46,6 +46,12 @@ public class A_TAB1_TrangChu extends javax.swing.JFrame {
 
     private void setLogo() {
         setImageToLabel(lblFPS, "src/STOCK_IMG/Logo_FPS.png");
+        ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        txtImg.setText("");
+        txtImg.setIcon(new ImageIcon(scaledImg));
+        txtUserName.setText(NameAccount);
     }
 
     private void setImageToLabel(JLabel label, String path) {
