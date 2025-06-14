@@ -22,12 +22,18 @@ public class A_TAB4_QLHD extends javax.swing.JFrame {
         InitUI();
         LoadAllHoaDon();
         GanSuKienBangHoaDon();
+        jLabel6.setText("2");
     }
 
     // Thiết lập giao diện ban đầu
     public void InitUI() {
         setTitle("4KL_Quản Lý Hóa Đơn");
         setLocationRelativeTo(null);
+        ImageIcon icon = new ImageIcon("src/USER_IMG/default.jpg");
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        txtImg.setText("");
+        txtImg.setIcon(new ImageIcon(scaledImg));
         txtUserName.setText(NameAccount);
 
         // Hiển thị số liệu thống kê tổng quan
@@ -289,7 +295,7 @@ public class A_TAB4_QLHD extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("100");
+        jLabel6.setText("2");
 
         lblHDC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHDC.setText("[HDC]");
